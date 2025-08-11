@@ -15,7 +15,7 @@ try {
     console.log($loginStatus)
     goto('/dashboard');
     } catch (err) {
-    message = err.message; //okay
+    message = err.message;
     }
 };
 </script>
