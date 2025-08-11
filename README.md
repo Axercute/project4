@@ -137,3 +137,5 @@ let {navBarInfo}=$props()
 * Don’t be afraid to try new things, if you don’t agree with something, try another thing. Keep trying until you find what is the best UX
 * If the current environment affects your coding journey, move somewhere greener. Touch grass.
 * Share your coding process with someone it will motivate you to do more
+
+**test
