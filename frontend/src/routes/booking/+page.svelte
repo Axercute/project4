@@ -20,7 +20,7 @@
   // import {treatment} from "$lib/treatment"
   import {onMount} from "svelte"
   onMount (async () => {
-  const res = await fetch('http://localhost:3000/services');
+  const res = await fetch('/api/service');
   treatments = await res.json();
   standardTreatment=treatments.filter((element)=>{return element.category==="Standard Treatment"})
   wellnessProgramme=treatments.filter((element)=>{return element.category==="TCM Wellness Program"})
@@ -28,20 +28,20 @@
  });
   //-------------logic for standard treatment, wellness and packaged treatment-------------------
 
-  let standardTreatmentEnglishName = $derived(standardTreatmentSelected.english_name);
+  let standardTreatmentId = $derived(standardTreatmentSelected._id);
   let standardTreatmentPrice = $derived (Number(standardTreatmentSelected.starting_price));
 
-  let wellnessProgrammeEnglishName = $derived(wellnessProgrammeSelected.english_name);
+  let wellnessProgrammeId = $derived(wellnessProgrammeSelected._id);
   let wellnessProgrammePrice = $derived(Number(wellnessProgrammeSelected.starting_price));
 
-  let packagedTreatmentEnglishName = $derived(packagedTreatmentSelected.english_name);
+  let packagedTreatmentId = $derived(packagedTreatmentSelected._id);
   let packagedTreatmentPrice = $derived(Number(packagedTreatmentSelected.starting_price)); 
 
  let price= $derived(loyaltyCheck.price+standardTreatmentPrice+wellnessProgrammePrice+packagedTreatmentPrice)
  let additionalRequest=$state("")
 
  let message = $derived(`This is ${name}, I would like to book a treatment at around $${price.toFixed(2)} on ${appointmentDate} at ${appointmentTime}.
- The treatment I am looking for is / are ${standardTreatmentEnglishName?standardTreatmentEnglishName:""}, ${wellnessProgrammeEnglishName?wellnessProgrammeEnglishName:""},${packagedTreatmentEnglishName?packagedTreatmentEnglishName:""},${additionalRequest?additionalRequest:""}
+ The treatment I am looking for is / are ${standardTreatmentId?standardTreatmentId:""}, ${wellnessProgrammeId?wellnessProgrammeId:""},${packagedTreatmentId?packagedTreatmentId:""},${additionalRequest?additionalRequest:""}
  `)
 
  let submissionLogic = $derived(
@@ -51,9 +51,9 @@
   date:appointmentDate,
   time:appointmentTime,
   treatments:[
-  {english_name:standardTreatmentEnglishName},
-  {english_name:wellnessProgrammeEnglishName},
-  {english_name:packagedTreatmentEnglishName},
+  standardTreatmentId,
+  wellnessProgrammeId,
+  packagedTreatmentId,
   ],
   extraComments:additionalRequest,
   price:Number(price),
@@ -66,21 +66,21 @@
     alert("Please select an appointment date or time before submitting.");
     return;
   }
-  if(!standardTreatmentEnglishName&&!wellnessProgrammeEnglishName&&!packagedTreatmentEnglishName) {
+  if(!standardTreatmentId&&!wellnessProgrammeId&&!packagedTreatmentId) {
     alert("Please select any treatment before submitting.");
     return;
   }
     // console.log(submissionString);
-    const response = await fetch('http://localhost:3000/appointment/createAppointment', {
+    const response = await fetch('/api/appointment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: submissionString
     });
-
+    
     const result = await response.json();
-    const link = result.appointment._id
+    const link = result._id
     await goto(`/booking/${link}`)
     window.open(`https://wa.me/6582881687?text=${message}`, "_blank");
   }

@@ -7,7 +7,7 @@
   let priceMenu = [];
 
  onMount (async () => {
-  const res = await fetch('http://localhost:3000/services');
+  const res = await fetch('/api/service');
   treatments = await res.json();
   choices = [...new Set(treatments.map(t=>t.category))];
   selectedChoice = choices[0];

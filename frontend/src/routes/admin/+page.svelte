@@ -1,18 +1,14 @@
 <script>
 import { signIn } from '$lib/authService';
 import { goto } from '$app/navigation';
-import {loginStatus} from "$lib/loginStatus"
 let email = $state("");
 let password = $state("");
 let message = $state("");
-loginStatus.set(false)
 const handleSubmit = async () => {
 try {
     const formData = {email, password};
     const user = await signIn(formData); 
     message = 'Successfully logged in';
-    loginStatus.set(true)
-    console.log($loginStatus)
     goto('/dashboard');
     } catch (err) {
     message = err.message;

@@ -23,7 +23,7 @@ export const dictionary = {
 		"/booking": [4],
 		"/booking/[appointmentId]": [5],
 		"/contactUs": [6],
-		"/dashboard": [~7],
+		"/dashboard": [7],
 		"/dashboard/appointment": [8],
 		"/dashboard/appointment/[appointmentId]": [9],
 		"/dashboard/service-management": [10],

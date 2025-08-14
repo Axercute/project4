@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
+// const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
 // const signUp = async (formData) => {
 // try { 
 //     const res = await fetch(`${BASE_URL}/create`, {
@@ -21,7 +21,7 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
 // };
 const signIn = async (formData ) => {
 try {
-    const res = await fetch(`${BASE_URL}/login`, {
+    const res = await fetch(`/api/login`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(formData),
@@ -42,8 +42,4 @@ try {
 
 };
 
-export {
-//   signUp,
-  signIn,
-};
-
+export {signIn}
