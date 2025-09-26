@@ -24,6 +24,7 @@
   <div class="flex flex-wrap justify-center mt-3">
  
     {#each choices as element}
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
       <div
         class={`px-4 py-2 font-semibold bg-red-400 border border-black text-white
                 ${selectedChoice === element

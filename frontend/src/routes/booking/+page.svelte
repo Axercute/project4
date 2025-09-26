@@ -25,9 +25,6 @@
   loyaltyCheck = consultation.find(el => el.english_name === "First")
  });
   //-------------logic for standard treatment, wellness and packaged treatment-------------------
-  import { writable } from 'svelte/store';
-  let treatmentAllId=writable("")
-
   let formSubmission = $state({
   name:"",
   appointmentDate:"",
@@ -47,9 +44,10 @@ let loyaltyCheck = $state("")
   formSubmission.packagedTreatmentSelected.starting_price
  ))
 
-//  let message = $derived(`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate} at ${formSubmission.appointmentTime}.
-//  The treatment I am looking for is / are ${standardTreatmentId?standardTreatmentId:""}, ${wellnessProgrammeId?wellnessProgrammeId:""},${packagedTreatmentId?packagedTreatmentId:""},${additionalRequest?additionalRequest:""}
-//  `)
+let arrayOfTreatments=$state([])
+let treatmentMessage=$state("")
+
+ let finalMessage = $state("")
 
   const handleSubmit=async(event)=> {
     event.preventDefault();
@@ -62,6 +60,22 @@ let loyaltyCheck = $state("")
   //   return;
   // }
   console.log(formSubmission)
+if(formSubmission.standardTreatmentSelected.english_name){
+  arrayOfTreatments.push(formSubmission.standardTreatmentSelected.english_name)}
+if(formSubmission.wellnessProgrammeSelected.english_name){
+  arrayOfTreatments.push(formSubmission.wellnessProgrammeSelected.english_name)
+}
+if(formSubmission.packagedTreatmentSelected.english_name){
+  arrayOfTreatments.push(formSubmission.packagedTreatmentSelected.english_name)
+}
+if(arrayOfTreatments.length===1){
+  treatmentMessage=`The treatment I booked is ${arrayOfTreatments}.`
+}
+else{
+  treatmentMessage=`The treatments I booked are ${arrayOfTreatments.join(",")}.`
+}
+console.log(`${formSubmission.name}`,`${price.toFixed(2)}`,treatmentMessage)
+console.log(`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate} at ${formSubmission.appointmentTime}.`,treatmentMessage,`${formSubmission.additionalRequest}`)
     // console.log(submissionString);
     // const response = await fetch('/api/appointment', {
     //   method: 'POST',

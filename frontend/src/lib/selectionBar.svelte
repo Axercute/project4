@@ -1,15 +1,20 @@
 <script>
-  export let value;
-  let open = false;
-  export let selected;
-  export let options = [];
+  let { value,selected,options } = $props();
+  let open = $state("")
+  let container=$state("")
   import {onMount} from "svelte"
-  // onMount(()=>{window.addEventListener("click",console.log("test"))
+  // onMount(()=>{window.addEventListener("click",testing)
   // return () => {
-  // window.removeEventListener('click',console.log("test"));
+  // window.removeEventListener('click',testing);
   // };
   // })
+  const testing=(event)=>{
+    console.log(container);
+    // console.log("target clicked",event.target)
+  }
 </script>
+
+<div bind:this={container} onclick={testing}>Awesome</div>
 
 <div class="w-50 mx-auto relative">
   <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->

@@ -47,6 +47,7 @@ let currentIndex=$state(0)
 <!--display flex card on treatment-->
 <div class="flex flex-row flex-wrap justify-center items-center">
 {#each treatmentDisplay as {image,text,description}}
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
 <div class="relative group w-40 h-40 flex justify-center items-center text-center m-2 hover:cursor-pointer" onclick={(event)=>{toggleOpen(event,description,text)}}>
 <img src = {image} alt ="digestion" class=" rounded-2xl absolute w-full h-full " />
 <div class="absolute w-full h-full bg-black/50 rounded-2xl group-hover:bg-black/20"></div>
@@ -58,6 +59,7 @@ let currentIndex=$state(0)
 <div class="flex-center text-white bg-red-800 font-semibold">Problems we tackle For:</div>
 <div class="flex flex-row flex-wrap justify-center items-center">
 {#each problemDisplay as {image,text,description}}
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
 <div class="relative group w-40 h-40 flex justify-center items-center text-center m-2 hover:cursor-pointer" onclick={(event)=>{toggleOpen(event,description,text)}}>
 <img src = {image} alt ="digestion" class=" rounded-2xl absolute w-full h-full"/>
 <div class="absolute w-full h-full bg-black/50 rounded-2xl group-hover:bg-black/20"></div>
@@ -69,6 +71,7 @@ let currentIndex=$state(0)
 <div class={`opacity-90 transition-[left] duration-500 ease-in-out bg-gradient-to-br from-[#7d1b1f] to-red-800 h-1/3 w-1/2 z-1 flex-center
  text-md font-semibold text-white fixed md:text-3xl ${open ? 'left-0' : '-left-full'} top-[50%] absolute`}>
  <div class="mx-2">
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->  
   <div class="w-6 h-6 mt-5 absolute cursor-pointer right-2 top-2" onclick={toggleClose}>
   <span class="absolute inset-0 w-full h-1 bg-amber-400 rotate-45 origin-center"></span>
   <span class="absolute inset-0 w-full h-1 bg-amber-400 -rotate-45 origin-center"></span>
