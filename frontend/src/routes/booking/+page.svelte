@@ -74,7 +74,7 @@ if(arrayOfTreatments.length===1){
 else{
   treatmentMessage=`The treatments I booked are ${arrayOfTreatments.join(",")}.`
 }
-console.log(`${formSubmission.name}`,`${price.toFixed(2)}`,treatmentMessage)
+// console.log(`${formSubmission.name}`,`${price.toFixed(2)}`,treatmentMessage)
 console.log(`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate} at ${formSubmission.appointmentTime}.`,treatmentMessage,`${formSubmission.additionalRequest}`)
     // console.log(submissionString);
     // const response = await fetch('/api/appointment', {
