@@ -17,6 +17,18 @@
       document.removeEventListener("click", handleClickOutside);
     };
   });
+
+  const selectOption=(element)=> {
+    if (typeof element === "string") {
+      selected = element;
+      value = element;
+    } else if (typeof element === "object" && element !== null) {
+      // customize here depending on your object structure
+      selected = element.english_name ?? element.name ?? JSON.stringify(element);
+      value = element;
+    }
+    open = false;
+  }
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
@@ -31,8 +43,8 @@ onclick={(e) => {open = !open}} bind:this={container} >{selected}</div>
     {#each options as element}
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) --> 
       <div class="px-4 py-1 text-center hover:bg-amber-400 cursor-pointer" 
-      onclick={(event) => {selected=element;value = element;open = false;
-      }}>{element}</div>
+      onclick={(event) => {selectOption(element);value = element;open = false;
+      }}>{typeof element === "string" ? element : element.english_name ?? element.name ?? JSON.stringify(element)}</div>
     {/each}
   </div>
 {/if}

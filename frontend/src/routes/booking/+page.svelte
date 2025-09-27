@@ -117,11 +117,11 @@ Loading
 <SelectionBar options={dateRange} selected={dateTitle} bind:value={formSubmission.appointmentDate}/>
 <SelectionBar options={timeRange} selected={timeTitle} bind:value={formSubmission.appointmentTime}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">Standard Treatment</div>
-<SelectionBarTreatment options={standardTreatment} selected={"Select only if required"} bind:value={formSubmission.standardTreatmentSelected}/>
+<SelectionBar options={standardTreatment} selected={"Select only if required"} bind:value={formSubmission.standardTreatmentSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">TCM Wellness Program</div>
-<SelectionBarTreatment options={wellnessProgramme} selected={"Select only if required"} bind:value={formSubmission.wellnessProgrammeSelected}/>
+<SelectionBar options={wellnessProgramme} selected={"Select only if required"} bind:value={formSubmission.wellnessProgrammeSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">Packaged Treatment</div>
-<SelectionBarTreatment options={packagedTreatment} selected={"Select only if required"} bind:value={formSubmission.packagedTreatmentSelected}/>
+<SelectionBar options={packagedTreatment} selected={"Select only if required"} bind:value={formSubmission.packagedTreatmentSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl text-outline">Cost Estimated: ${price.toFixed(2)}</div>
 <!-- <div class="flex flex-row space-x-5">
 {#each service.senior as element}
