@@ -1,38 +1,36 @@
 <script>
-  import { goto } from '$app/navigation';
-  let senior = false
-  import {service,treatmentTitle} from "./logic"
-  import SelectionBar from "$lib/selectionBar.svelte"
-  import SelectionBarTreatment from "$lib/selectionBarTreatment.svelte";
-  import {dateRange,timeRange,dateTitle,timeTitle,} from "$lib/dateRange"
-  let dates=$state("")
-  // let seniorCheck = $state(service.senior[0])
-  let consultation=$state("")
-  let treatments=[];
-  let standardTreatment=$state([]);
-  let wellnessProgramme=$state([]);
-  let packagedTreatment=$state([]);
+import { goto } from '$app/navigation';
+let senior = false
+import {service,treatmentTitle} from "./logic"
+import SelectionBar from "$lib/selectionBar.svelte"
+let dates=$state("")
+// let seniorCheck = $state(service.senior[0])
+let consultation=$state("")
+let treatments=[];
+let standardTreatment=$state([]);
+let wellnessProgramme=$state([]);
+let packagedTreatment=$state([]);
 
-  import {onMount} from "svelte"
-  onMount (async () => {
-  const res = await fetch('/api/service');
-  treatments = await res.json();
-  standardTreatment=treatments.filter((element)=>{return element.category==="Standard Treatment"})
-  wellnessProgramme=treatments.filter((element)=>{return element.category==="TCM Wellness Program"})
-  packagedTreatment=treatments.filter((element)=>{return element.category==="Package Price"})
-  consultation=treatments.filter((element)=>{return element.category==="consultation"})
-  // console.log(consultation)
-  loyaltyCheck = consultation.find(el => el.english_name === "First")
- });
-  //-------------logic for standard treatment, wellness and packaged treatment-------------------
-  let formSubmission = $state({
-  name:"",
-  appointmentDate:"",
-  appointmentTime:"",
-  standardTreatmentSelected:{starting_price:0},
-  wellnessProgrammeSelected:{starting_price:0},
-  packagedTreatmentSelected:{starting_price:0},
-  additionalRequest:"",
+import {onMount} from "svelte"
+onMount (async () => {
+const res = await fetch('/api/service');
+treatments = await res.json();
+standardTreatment=treatments.filter((element)=>{return element.category==="Standard Treatment"})
+wellnessProgramme=treatments.filter((element)=>{return element.category==="TCM Wellness Program"})
+packagedTreatment=treatments.filter((element)=>{return element.category==="Package Price"})
+consultation=treatments.filter((element)=>{return element.category==="consultation"})
+// console.log(consultation)
+loyaltyCheck = consultation.find(el => el.english_name === "First")
+});
+//-------------logic for standard treatment, wellness and packaged treatment-------------------
+let formSubmission = $state({
+name:"",
+appointmentDate:"",
+appointmentTime:"",
+standardTreatmentSelected:{starting_price:0},
+wellnessProgrammeSelected:{starting_price:0},
+packagedTreatmentSelected:{starting_price:0},
+additionalRequest:"",
 })
 
 let loyaltyCheck = $state("")
@@ -51,14 +49,14 @@ let treatmentMessage=$state("")
 
   const handleSubmit=async(event)=> {
     event.preventDefault();
-  //   if (!appointmentDate||!appointmentTime) {
-  //   alert("Please select an appointment date or time before submitting.");
-  //   return;
-  // }
-  // if(!standardTreatmentId&&!wellnessProgrammeId&&!packagedTreatmentId) {
-  //   alert("Please select any treatment before submitting.");
-  //   return;
-  // }
+    if (!formSubmission.appointmentDate||!formSubmission.appointmentTime) {
+    alert("Please select an appointment date or time before submitting.");
+    return;
+  }
+  if(!formSubmission.standardTreatmentSelected&&!formSubmission.wellnessProgrammeSelected&&!formSubmission.packagedTreatmentSelected) {
+    alert("Please select any treatment before submitting.");
+    return;
+  }
   console.log(formSubmission)
 if(formSubmission.standardTreatmentSelected.english_name){
   arrayOfTreatments.push(formSubmission.standardTreatmentSelected.english_name)}
@@ -90,6 +88,58 @@ console.log(`This is ${formSubmission.name}, I would like to book a treatment at
     // await goto(`/booking/${link}`)
     // window.open(`https://wa.me/6582881687?text=${message}`, "_blank");
   }
+
+//Date logic from here onwards
+import dayjs from 'dayjs';
+let today = dayjs();
+let days = 14;  // 2 weeks
+let timeRange = [];
+let dateRange = [];
+let dateTitle = "Date of visit";
+let timeTitle = "Time of visit";
+// Business hours
+let endHour = 21; // 9 PM
+let openHour = 10;
+
+// --- DATE RANGE LOGIC ---
+// If it's after 9 PM, start date range from tomorrow
+let dateStart = today.hour() >= endHour ? today.add(1, 'day') : today;
+
+// Generate array of Day.js dates from today to 2 weeks later
+for (let i = 0; i <= days; i++) {
+  dateRange.push(dateStart.add(i, 'day').format('D MMMM YYYY'));
+}
+
+// --- TIME RANGE LOGIC ---
+let start;
+
+if (today.hour() >= endHour) {
+  // If after closing -> start tomorrow at openHour
+  start = today.add(1, 'day').hour(openHour).minute(0).second(0);
+} else {
+  // Otherwise round to the next hour
+  start = today.minute() === 0 && today.second() === 0
+    ? today
+    : today.add(1, 'hour').startOf('hour');
+
+  // If the next hour is still before opening -> adjust to openHour today
+  if (start.hour() < openHour) {
+    start = today.hour(openHour).minute(0).second(0);
+  }
+}
+
+// Now make sure "start" belongs to the same day as dateStart
+if (!start.isSame(dateStart, 'day')) {
+  start = dateStart.hour(openHour).minute(0).second(0);
+}
+
+while (start.hour() <= endHour) {
+  timeRange.push(start.format('h A'));
+  start = start.add(1, 'hour');
+}
+
+
+
 </script>
 
 <div class="h-screen justify-center items-center flex">

@@ -1,22 +1,23 @@
 <script>
-  let { value = $bindable(),selected,options } = $props();
-  let open = $state("")
-  let container=$state("")
-  import {onMount} from "svelte"
-  onMount(() => {
-    const handleClickOutside = (event) => {
-      if (container && !container.contains(event.target)) {
-        open = false; // Close dropdown
-      }
-    };
+let { value = $bindable(),selected,options } = $props();
+let open = $state("")
+let container=$state("")
+import {onMount} from "svelte"
+import { dateRange } from "./dateRange";
+onMount(() => {
+  const handleClickOutside = (event) => {
+    if (container && !container.contains(event.target)) {
+      open = false; // Close dropdown
+    }
+  };
 
-    document.addEventListener("click", handleClickOutside);
+  document.addEventListener("click", handleClickOutside);
 
-    // Cleanup listener on unmount
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  });
+  // Cleanup listener on unmount
+  return () => {
+    document.removeEventListener("click", handleClickOutside);
+  };
+});
 
   const selectOption=(element)=> {
     if (typeof element === "string") {

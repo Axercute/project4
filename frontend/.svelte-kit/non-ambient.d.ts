@@ -23,3 +23,38 @@ declare module "svelte/elements" {
 }
 
 export {};
+
+
+declare module "$app/types" {
+	export interface AppTypes {
+		RouteId(): "/" | "/admin" | "/api" | "/api/appointment" | "/api/appointment/[appointmentId]" | "/api/dataInput" | "/api/login" | "/api/protection" | "/api/service" | "/booking" | "/booking/[appointmentId]" | "/contactUs" | "/dashboard" | "/dashboard/appointment" | "/dashboard/appointment/[appointmentId]" | "/dashboard/service-management" | "/pricing" | "/test";
+		RouteParams(): {
+			"/api/appointment/[appointmentId]": { appointmentId: string };
+			"/booking/[appointmentId]": { appointmentId: string };
+			"/dashboard/appointment/[appointmentId]": { appointmentId: string }
+		};
+		LayoutParams(): {
+			"/": { appointmentId?: string };
+			"/admin": Record<string, never>;
+			"/api": { appointmentId?: string };
+			"/api/appointment": { appointmentId?: string };
+			"/api/appointment/[appointmentId]": { appointmentId: string };
+			"/api/dataInput": Record<string, never>;
+			"/api/login": Record<string, never>;
+			"/api/protection": Record<string, never>;
+			"/api/service": Record<string, never>;
+			"/booking": { appointmentId?: string };
+			"/booking/[appointmentId]": { appointmentId: string };
+			"/contactUs": Record<string, never>;
+			"/dashboard": { appointmentId?: string };
+			"/dashboard/appointment": { appointmentId?: string };
+			"/dashboard/appointment/[appointmentId]": { appointmentId: string };
+			"/dashboard/service-management": Record<string, never>;
+			"/pricing": Record<string, never>;
+			"/test": Record<string, never>
+		};
+		Pathname(): "/" | "/admin" | "/admin/" | "/api" | "/api/" | "/api/appointment" | "/api/appointment/" | `/api/appointment/${string}` & {} | `/api/appointment/${string}/` & {} | "/api/dataInput" | "/api/dataInput/" | "/api/login" | "/api/login/" | "/api/protection" | "/api/protection/" | "/api/service" | "/api/service/" | "/booking" | "/booking/" | `/booking/${string}` & {} | `/booking/${string}/` & {} | "/contactUs" | "/contactUs/" | "/dashboard" | "/dashboard/" | "/dashboard/appointment" | "/dashboard/appointment/" | `/dashboard/appointment/${string}` & {} | `/dashboard/appointment/${string}/` & {} | "/dashboard/service-management" | "/dashboard/service-management/" | "/pricing" | "/pricing/" | "/test" | "/test/";
+		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
+		Asset(): "/carousel/picture1.jpg" | "/carousel/picture2.jpg" | "/carousel/picture3.jpg" | "/carousel/picture4.jpg" | "/favicon.svg" | "/logo.png" | "/logo2.jpg" | "/mainlogo.png" | "/problems/problem1.jpg" | "/problems/problem10.jpg" | "/problems/problem11.jpg" | "/problems/problem12.jpg" | "/problems/problem2.jpg" | "/problems/problem3.jpg" | "/problems/problem4.jpg" | "/problems/problem5.jpg" | "/problems/problem6.jpg" | "/problems/problem7.jpg" | "/problems/problem8.jpg" | "/problems/problem9.jpg" | "/README/newWebIpad.png" | "/README/newWebPhone.png" | "/README/newWebWeb.png" | "/README/oldWeb.png" | "/treatments/treatment1.jpg" | "/treatments/treatment2.jpg" | "/treatments/treatment3.jpg" | "/treatments/treatment4.jpg" | "/treatments/treatment5.jpg" | "/treatments/treatment6.jpg" | "/treatments/treatment7.jpg" | "/treatments/treatment8.jpg" | "/tuina.jpg" | "/tuipic.jpg" | string & {};
+	}
+}

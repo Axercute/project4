@@ -1,8 +1,10 @@
 import dayjs from 'dayjs';
-
 let today = dayjs();
 let days = 14;  // 2 weeks
-
+export let timeRange = [];
+export let dateRange = [];
+export let dateTitle = "Date of visit";
+export let timeTitle = "Time of visit";
 // Business hours
 let endHour = 21; // 9 PM
 let openHour = 10;
@@ -12,7 +14,6 @@ let openHour = 10;
 let dateStart = today.hour() >= endHour ? today.add(1, 'day') : today;
 
 // Generate array of Day.js dates from today to 2 weeks later
-export let dateRange = [];
 for (let i = 0; i <= days; i++) {
   dateRange.push(dateStart.add(i, 'day').format('D MMMM YYYY'));
 }
@@ -40,11 +41,8 @@ if (!start.isSame(dateStart, 'day')) {
   start = dateStart.hour(openHour).minute(0).second(0);
 }
 
-export let timeRange = [];
 while (start.hour() <= endHour) {
   timeRange.push(start.format('h A'));
   start = start.add(1, 'hour');
 }
 
-export let dateTitle = "Date of visit";
-export let timeTitle = "Time of visit";
