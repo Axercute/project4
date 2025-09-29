@@ -1,83 +1,115 @@
 <script>
   import { DateTime as dt } from "luxon";
 
-  let selectedDateTime = dt.now();
-  let currentMonth = dt.now().startOf("month");
+  let today = dt.now();
+  let selectedDate = today;
+  let firstDayOfThisMonth = dt.now().set({ day: 1 });
 
-  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const hours = Array.from({ length: 24 }, (_, i) => i); // 0..23
+  let open = false;
+  let container;
 
-  function getDays(month) {
-    const startWeekday = month.weekday % 7;
-    const daysInMonth = month.daysInMonth;  
+  const getDays = () => {
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const startWeekday = firstDayOfThisMonth.weekday % 7;
+    const daysInMonth = firstDayOfThisMonth.daysInMonth;
     const days = [];
-    for (let i = 0; i < startWeekday; i++) days.push(null);
+    for (let i = 0; i < startWeekday; i++) days.push("");
     for (let d = 1; d <= daysInMonth; d++) days.push(d);
-    return days;
-  }
+    return { days, weekdays };
+  };
 
-  function prevMonth() {
-    currentMonth = currentMonth.minus({ months: 1 });
-  }
+  let { days, weekdays } = getDays();
 
-  function nextMonth() {
-    currentMonth = currentMonth.plus({ months: 1 });
-  }
+  const prevMonth = () => {
+    firstDayOfThisMonth = firstDayOfThisMonth.minus({ months: 1 });
+    ({ days, weekdays } = getDays());
+  };
 
-  function selectDate(day) {
-    selectedDateTime = selectedDateTime.set({
-      year: currentMonth.year,
-      month: currentMonth.month,
-      day
-    });
-  }
+  const nextMonth = () => {
+    firstDayOfThisMonth = firstDayOfThisMonth.plus({ months: 1 });
+    ({ days, weekdays } = getDays());
+  };
 
-  function selectHour(event) {
-    selectedDateTime = selectedDateTime.set({ hour: Number(event.target.value), minute: 0 });
-  }
+  const selectDate = (day) => {
+    if (!day) return;
+    const dateObj = firstDayOfThisMonth.set({ day });
+    if (dateObj >= today.startOf('day')) selectedDate = dateObj;
+  };
+
+  import { onMount } from "svelte";
+  onMount(() => {
+    const handleClickOutside = (event) => {
+      if (container && !container.contains(event.target)) {
+        open = false;
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  });
 </script>
 
-<div class="border rounded p-2 w-128 mb-4 bg-[#7d1b1f]">
-  <div class="flex justify-between items-center mb-2 text-white">
-    <button on:click={prevMonth} class="hover:bg-green-400">&lt;</button>
-    <div class="font-bold">{currentMonth.toFormat("MMMM yyyy")}</div>
-    <button on:click={nextMonth} class="hover:bg-green-400">&gt;</button>
-  </div>
+<div class="flex flex-col justify-center items-center min-h-screen">
+  <!-- single container for toggle + dropdown -->
+  <div class="relative" bind:this={container}>
 
-  <div class="grid grid-cols-7 text-center font-semibold text-white gap-8">
-    {#each weekdays as day}
-      <div>{day}</div>
-    {/each}
-  </div>
+    <!-- dropdown toggle -->
+    <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->  
+    <div
+      class={`w-50 px-4 py-2 border rounded text-center cursor-pointer ${open ? 'bg-amber-400' : 'bg-white'}`}
+      onclick={() => open = !open}
+    >
+    {selectedDate.toFormat('dd MMMM yyyy')}
+    </div>
 
-  <div class="grid grid-cols-7 text-center text-white gap-8">
-    {#each getDays(currentMonth) as day}
-      {#if day === null}
-        <div></div>
-      {:else}
-      <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) --> 
-        <div
-          class="cursor-pointer rounded p-1 hover:bg-green-400
-            {selectedDateTime.hasSame(currentMonth.set({ day }), 'day') ? 'bg-green-400 text-white' : ''}
-            {dt.now().hasSame(currentMonth.set({ day }), 'day') ? 'border border-blue-500' : ''}"
-          on:click={() => selectDate(day)}
-        >
-          {day}
+    {#if open}
+      <!-- dropdown calendar -->
+       <div class="flex-center">
+      <div class="absolute mt-1 p-2 w-80 bg-[#7d1b1f] border-2 rounded-xl border-white z-10">
+        <div class="flex justify-between items-center mb-2 text-white">
+          <button onclick={prevMonth} class="hover:bg-green-400 text-sm">Previous</button>
+          <div class="font-bold">{firstDayOfThisMonth.toFormat("MMMM yyyy")}</div>
+          <button onclick={nextMonth} class="hover:bg-green-400 text-sm">Next</button>
         </div>
-      {/if}
-    {/each}
+
+        <div class="grid grid-cols-7 text-center bold text-white gap-3">
+          {#each weekdays as day}
+            <div>{day}</div>
+          {/each}
+        </div>
+
+        <div class="grid grid-cols-7 text-center text-white gap-3">
+          {#each days as day}
+            {#if day === ""}
+              <div></div>
+            {:else}
+          <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->  
+                  <div  
+                  class="rounded p-1 cursor-pointer
+                    {firstDayOfThisMonth.set({ day }).hasSame(selectedDate, 'day')
+                      ? 'bg-green-400 text-white hover:bg-green-400'
+                      : firstDayOfThisMonth.set({ day }) < today
+                        ? 'bg-gray-500 hover:cursor-not-allowed opacity-50'
+                        : 'bg-red-400 `text-white hover:bg-green-400'}"
+                  onclick={() => {
+                    const dateObj = firstDayOfThisMonth.set({ day });
+                    if (dateObj >= today.startOf('day')) {
+                      selectDate(day);
+                      open = false; // <-- close the dropdown immediately
+                    }
+                  }}
+                  >
+                {day}
+              </div>
+            {/if}
+          {/each}
+        </div>
+      </div>
+      </div>
+    {/if}
+
   </div>
-</div>
 
-<div class="flex flex-col gap-2 w-64">
-  <label for="hour">Select Hour:</label>
-  <select id="hour" on:change={selectHour} bind:value={selectedDateTime.hour}>
-    {#each hours as h}
-      <option value={h}>{h % 12 === 0 ? 12 : h % 12} {h < 12 ? "AM" : "PM"}</option>
-    {/each}
-  </select>
+  <!-- <p class="mt-2">
+    Selected: {selectedDate.toLocaleString(dt.DATETIME_FULL)}
+  </p> -->
 </div>
-
-<p class="mt-2">
-  Selected: {selectedDateTime.toLocaleString(dt.DATETIME_FULL)}
-</p>
