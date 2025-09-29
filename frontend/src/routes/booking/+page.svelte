@@ -3,6 +3,8 @@ import { goto } from '$app/navigation';
 let senior = false
 import {service,treatmentTitle} from "./logic"
 import SelectionBar from "$lib/selectionBar.svelte"
+import Calendar from '$lib/calendar.svelte';
+import { DateTime as dt } from 'luxon';
 let dates=$state("")
 // let seniorCheck = $state(service.senior[0])
 let consultation=$state("")
@@ -25,16 +27,14 @@ loyaltyCheck = consultation.find(el => el.english_name === "First")
 //-------------logic for standard treatment, wellness and packaged treatment-------------------
 let formSubmission = $state({
 name:"",
-appointmentDate:"",
-appointmentTime:"",
+appointmentDate:dt.now(),
+appointmentTime:dt.now().plus({hours:1}),
 standardTreatmentSelected:{starting_price:0},
 wellnessProgrammeSelected:{starting_price:0},
 packagedTreatmentSelected:{starting_price:0},
 additionalRequest:"",
 })
-
 let loyaltyCheck = $state("")
-
  let price= $derived(Number(
   loyaltyCheck.starting_price+
   formSubmission.standardTreatmentSelected.starting_price+
@@ -49,7 +49,7 @@ let treatmentMessage=$state("")
 
   const handleSubmit=async(event)=> {
     event.preventDefault();
-    if (!formSubmission.appointmentDate||!formSubmission.appointmentTime) {
+    if (!formSubmission.appointmentDate) {
     alert("Please select an appointment date or time before submitting.");
     return;
   }
@@ -73,7 +73,7 @@ else{
   treatmentMessage=`The treatments I booked are ${arrayOfTreatments.join(",")}.`
 }
 // console.log(`${formSubmission.name}`,`${price.toFixed(2)}`,treatmentMessage)
-console.log(`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate} at ${formSubmission.appointmentTime}.`,treatmentMessage,`${formSubmission.additionalRequest}`)
+console.log(`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate.toFormat('dd MMMM yyyy')} at ${formSubmission.appointmentTime.toFormat("h a")}.`,treatmentMessage,`${formSubmission.additionalRequest}`)
     // console.log(submissionString);
     // const response = await fetch('/api/appointment', {
     //   method: 'POST',
@@ -90,53 +90,36 @@ console.log(`This is ${formSubmission.name}, I would like to book a treatment at
   }
 
 //Date logic from here onwards
-import dayjs from 'dayjs';
-let today = dayjs();
-let days = 14;  // 2 weeks
-let timeRange = [];
-let dateRange = [];
-let dateTitle = "Date of visit";
-let timeTitle = "Time of visit";
-// Business hours
-let endHour = 21; // 9 PM
-let openHour = 10;
+const SHOP_OPEN = 10;
+const SHOP_CLOSE = 22;
+let timeRange=$state([])
+// Assume formSubmission.appointmentDate is a Luxon DateTime or a JS Date
+const appointmentDate = dt.fromISO(formSubmission.appointmentDate); // convert if needed
+const appointmentTime = dt.fromISO(formSubmission.appointmentTime)
+const now = dt.now();
+console.log(appointmentTime)
 
-// --- DATE RANGE LOGIC ---
-// If it's after 9 PM, start date range from tomorrow
-let dateStart = today.hour() >= endHour ? today.add(1, 'day') : today;
+let startHour, endHour;
 
-// Generate array of Day.js dates from today to 2 weeks later
-for (let i = 0; i <= days; i++) {
-  dateRange.push(dateStart.add(i, 'day').format('D MMMM YYYY'));
-}
-
-// --- TIME RANGE LOGIC ---
-let start;
-
-if (today.hour() >= endHour) {
-  // If after closing -> start tomorrow at openHour
-  start = today.add(1, 'day').hour(openHour).minute(0).second(0);
-} else {
-  // Otherwise round to the next hour
-  start = today.minute() === 0 && today.second() === 0
-    ? today
-    : today.add(1, 'hour').startOf('hour');
-
-  // If the next hour is still before opening -> adjust to openHour today
-  if (start.hour() < openHour) {
-    start = today.hour(openHour).minute(0).second(0);
+// Check if appointment is today
+if (appointmentDate.hasSame(now, "day")) {
+  // Start from next full hour
+  startHour = now.hour + 1;
+  if (startHour < SHOP_OPEN) startHour = SHOP_OPEN;
+  if (startHour >= SHOP_CLOSE) {
+    console.log("Shop is closed for today");
+    timeRange = [];
+  } else {
+    endHour = SHOP_CLOSE;
   }
+} else {
+  // Future day → full shop hours
+  startHour = SHOP_OPEN;
+  endHour = SHOP_CLOSE;
 }
 
-// Now make sure "start" belongs to the same day as dateStart
-if (!start.isSame(dateStart, 'day')) {
-  start = dateStart.hour(openHour).minute(0).second(0);
-}
 
-while (start.hour() <= endHour) {
-  timeRange.push(start.format('h A'));
-  start = start.add(1, 'hour');
-}
+
 
 
 
@@ -164,8 +147,9 @@ Loading
       <label for="first_name" class="mb-2">Your name</label>
       <input type="text" id="first_name" placeholder="John" class="text-center" bind:value={formSubmission.name} required />
 </div>
-<SelectionBar options={dateRange} selected={dateTitle} bind:value={formSubmission.appointmentDate}/>
-<SelectionBar options={timeRange} selected={timeTitle} bind:value={formSubmission.appointmentTime}/>
+<Calendar bind:value={formSubmission.appointmentDate}/>
+<!-- <SelectionBar options={dateRange} selected={dateTitle} bind:value={formSubmission.appointmentDate}/> -->
+<SelectionBar options={timeRange} selected={formSubmission.appointmentTime.toFormat("h a")} bind:value={formSubmission.appointmentTime}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">Standard Treatment</div>
 <SelectionBar options={standardTreatment} selected={"Select only if required"} bind:value={formSubmission.standardTreatmentSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">TCM Wellness Program</div>
