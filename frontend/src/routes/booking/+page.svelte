@@ -90,33 +90,25 @@ console.log(`This is ${formSubmission.name}, I would like to book a treatment at
   }
 
 //Date logic from here onwards
-const SHOP_OPEN = 10;
-const SHOP_CLOSE = 22;
+const openTime = 10;
+const closeTime = 22;
 let timeRange=$state([])
-// Assume formSubmission.appointmentDate is a Luxon DateTime or a JS Date
-const appointmentDate = dt.fromISO(formSubmission.appointmentDate); // convert if needed
-const appointmentTime = dt.fromISO(formSubmission.appointmentTime)
-const now = dt.now();
-console.log(appointmentTime)
+let today=dt.now()
+const appointmentDate = dt.fromISO(formSubmission.appointmentDate); 
+console.log("appointmentDate",appointmentDate)
 
-let startHour, endHour;
+let startHour = appointmentDate.hour + 1;
 
-// Check if appointment is today
-if (appointmentDate.hasSame(now, "day")) {
-  // Start from next full hour
-  startHour = now.hour + 1;
-  if (startHour < SHOP_OPEN) startHour = SHOP_OPEN;
-  if (startHour >= SHOP_CLOSE) {
-    console.log("Shop is closed for today");
-    timeRange = [];
-  } else {
-    endHour = SHOP_CLOSE;
-  }
-} else {
-  // Future day → full shop hours
-  startHour = SHOP_OPEN;
-  endHour = SHOP_CLOSE;
-}
+    for (let hour = startHour ; hour <= closeTime; hour++) {
+      timeRange.push(
+        appointmentDate.set({ hour, minute: 0 }).toFormat("h a")
+      );
+    }
+// $effect(()=>{
+//   console.log("date changed",formSubmission.appointmentDate)
+// })
+
+
 
 
 

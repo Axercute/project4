@@ -34,7 +34,7 @@
   const selectDate = (day) => {
     if (!day) return;
     const dateObj = firstDayOfThisMonth.set({ day });
-    if (dateObj >= today.startOf('day')) selectedDate = dateObj
+    if (dateObj >= today.startOf('day')) selectedDate = dateObj;value=dateObj
   };
 
   import { onMount } from "svelte";
