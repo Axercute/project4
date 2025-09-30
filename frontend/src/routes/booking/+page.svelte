@@ -61,7 +61,7 @@ let treatmentMessage=$state("")
     warningText=true
     return;
   }
-  console.log(formSubmission)
+  // console.log(formSubmission)
 if(formSubmission.standardTreatmentSelected.english_name){
   arrayOfTreatments.push(formSubmission.standardTreatmentSelected.english_name)}
 if(formSubmission.wellnessProgrammeSelected.english_name){
@@ -84,12 +84,12 @@ finalMessage=`This is ${formSubmission.name}, I would like to book a treatment a
       headers: {
         'Content-Type': 'application/json'
       },
-      body: formSubmission
+      body: JSON.stringify(formSubmission)
     });
     
-    // const result = await response.json();
-    // const link = result._id
-    // await goto(`/booking/${link}`)
+    const result = await response.json();
+    const link = result._id
+    await goto(`/booking/${link}`)
     window.open(`https://wa.me/6582881687?text=${finalMessage}`, "_blank");
   }
 
