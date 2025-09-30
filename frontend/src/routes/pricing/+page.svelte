@@ -9,7 +9,7 @@
  onMount (async () => {
   const res = await fetch('/api/service');
   treatments = await res.json();
-  choices = [...new Set(treatments.map(t=>t.category))];
+  choices = [...new Set(treatments.map(t=>t.category).filter(c => c !== "Featured Treatment"&&c!=="consultation"))];
   selectedChoice = choices[0];
   priceMenu = treatments.filter(t=>t.category ===selectedChoice);
  });
@@ -20,9 +20,10 @@
 
 </script>
 
-
+{#if !treatments}
+<div class="lds-dual-ring"></div>
+{:else}
   <div class="flex flex-wrap justify-center mt-3">
- 
     {#each choices as element}
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
       <div
@@ -51,5 +52,5 @@
     {/each}
   </div>
 </div>
-
+{/if}
     

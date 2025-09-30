@@ -5,13 +5,31 @@ import {service,treatmentTitle} from "./logic"
 import SelectionBar from "$lib/selectionBar.svelte"
 import Calendar from '$lib/calendar.svelte';
 import { DateTime as dt } from 'luxon';
-let dates=$state("")
 // let seniorCheck = $state(service.senior[0])
 let consultation=$state("")
 let treatments=[];
 let standardTreatment=$state([]);
 let wellnessProgramme=$state([]);
 let packagedTreatment=$state([]);
+let warningText=$state(false)
+
+//-------------logic for standard treatment, wellness and packaged treatment-------------------
+let formSubmission = $state({
+loyaltyCheck:"",
+name:"",
+appointmentDate:dt.now(),
+appointmentTime:dt.now().plus({hours:1}).toFormat("h a"),
+standardTreatmentSelected:{starting_price:0},
+wellnessProgrammeSelected:{starting_price:0},
+packagedTreatmentSelected:{starting_price:0},
+additionalRequest:"",
+price:"",
+})
+
+$effect(()=>{
+  formSubmission.price=price
+}
+)
 
 import {onMount} from "svelte"
 onMount (async () => {
@@ -22,25 +40,15 @@ wellnessProgramme=treatments.filter((element)=>{return element.category==="TCM W
 packagedTreatment=treatments.filter((element)=>{return element.category==="Package Price"})
 consultation=treatments.filter((element)=>{return element.category==="consultation"})
 // console.log(consultation)
-loyaltyCheck = consultation.find(el => el.english_name === "First")
+formSubmission.loyaltyCheck = consultation.find(el => el.english_name === "First")
 });
-//-------------logic for standard treatment, wellness and packaged treatment-------------------
-let formSubmission = $state({
-name:"",
-appointmentDate:dt.now(),
-appointmentTime:dt.now().plus({hours:1}),
-standardTreatmentSelected:{starting_price:0},
-wellnessProgrammeSelected:{starting_price:0},
-packagedTreatmentSelected:{starting_price:0},
-additionalRequest:"",
-})
-let loyaltyCheck = $state("")
- let price= $derived(Number(
-  loyaltyCheck.starting_price+
-  formSubmission.standardTreatmentSelected.starting_price+
-  formSubmission.wellnessProgrammeSelected.starting_price+
-  formSubmission.packagedTreatmentSelected.starting_price
- ))
+
+let price= $derived(Number(
+formSubmission.loyaltyCheck.starting_price+
+formSubmission.standardTreatmentSelected.starting_price+
+formSubmission.wellnessProgrammeSelected.starting_price+
+formSubmission.packagedTreatmentSelected.starting_price
+))
 
 let arrayOfTreatments=$state([])
 let treatmentMessage=$state("")
@@ -49,12 +57,8 @@ let treatmentMessage=$state("")
 
   const handleSubmit=async(event)=> {
     event.preventDefault();
-    if (!formSubmission.appointmentDate) {
-    alert("Please select an appointment date or time before submitting.");
-    return;
-  }
-  if(!formSubmission.standardTreatmentSelected&&!formSubmission.wellnessProgrammeSelected&&!formSubmission.packagedTreatmentSelected) {
-    alert("Please select any treatment before submitting.");
+  if(!formSubmission.standardTreatmentSelected.english_name&&!formSubmission.wellnessProgrammeSelected.english_name&&!formSubmission.packagedTreatmentSelected.english_name) {
+    warningText=true
     return;
   }
   console.log(formSubmission)
@@ -72,42 +76,42 @@ if(arrayOfTreatments.length===1){
 else{
   treatmentMessage=`The treatments I booked are ${arrayOfTreatments.join(",")}.`
 }
-// console.log(`${formSubmission.name}`,`${price.toFixed(2)}`,treatmentMessage)
-console.log(`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate.toFormat('dd MMMM yyyy')} at ${formSubmission.appointmentTime.toFormat("h a")}.`,treatmentMessage,`${formSubmission.additionalRequest}`)
-    // console.log(submissionString);
-    // const response = await fetch('/api/appointment', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: submissionString
-    // });
+finalMessage=`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate.toFormat('dd MMMM yyyy')} at ${formSubmission.appointmentTime}.${treatmentMessage}.${formSubmission.additionalRequest}`
+
+// console.log(submissionString);
+    const response = await fetch('/api/appointment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: formSubmission
+    });
     
     // const result = await response.json();
     // const link = result._id
     // await goto(`/booking/${link}`)
-    // window.open(`https://wa.me/6582881687?text=${message}`, "_blank");
+    window.open(`https://wa.me/6582881687?text=${finalMessage}`, "_blank");
   }
 
 //Date logic from here onwards
 const openTime = 10;
-const closeTime = 22;
-let timeRange=$state([])
+const closeTime = 21;
 let today=dt.now()
-const appointmentDate = dt.fromISO(formSubmission.appointmentDate); 
-console.log("appointmentDate",appointmentDate)
+let appointmentDate=formSubmission.appointmentDate
 
-let startHour = appointmentDate.hour + 1;
+let timeRange=$state([])
+for (let hour = appointmentDate.hour + 1 ; hour <= closeTime; hour++) {
+  timeRange.push(
+    appointmentDate.set({ hour, minute: 0 }).toFormat("h a"))
+  }
 
-    for (let hour = startHour ; hour <= closeTime; hour++) {
-      timeRange.push(
-        appointmentDate.set({ hour, minute: 0 }).toFormat("h a")
-      );
-    }
-// $effect(()=>{
-//   console.log("date changed",formSubmission.appointmentDate)
-// })
+let resetTimeRange = $state([])
+for (let hour = openTime ; hour <= closeTime; hour++) {
+  resetTimeRange.push(
+    appointmentDate.set({ hour, minute: 0 }))
+  }
 
+  // console.log(resetTimeRange)
 
 
 
@@ -123,12 +127,12 @@ flex-center flex-col w-[75%] rounded-2xl outline-2 outline-white shadow-2xl shad
 <div class=" text-xl font-semibold text-[#E8C6A0]">Consultation</div>
 
 {#if !consultation}
-Loading
+<div class="lds-dual-ring"></div>
 {:else}
 <div class="flex flex-row space-x-10">
 {#each consultation as element}
 <label class="- hover:cursor-pointer">
-	<input type="radio" bind:group={loyaltyCheck} value={element} class="mt-2"/>
+	<input type="radio" bind:group={formSubmission.loyaltyCheck} value={element} class="mt-2"/>
 	{element.english_name}
 </label>
 {/each}
@@ -141,7 +145,7 @@ Loading
 </div>
 <Calendar bind:value={formSubmission.appointmentDate}/>
 <!-- <SelectionBar options={dateRange} selected={dateTitle} bind:value={formSubmission.appointmentDate}/> -->
-<SelectionBar options={timeRange} selected={formSubmission.appointmentTime.toFormat("h a")} bind:value={formSubmission.appointmentTime}/>
+<SelectionBar options={resetTimeRange.map(e=>e.toFormat("h a"))} selected={formSubmission.appointmentTime} bind:value={formSubmission.appointmentTime}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">Standard Treatment</div>
 <SelectionBar options={standardTreatment} selected={"Select only if required"} bind:value={formSubmission.standardTreatmentSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">TCM Wellness Program</div>
@@ -158,10 +162,36 @@ Loading
 {/each}
 </div> -->
 <label for="additional">Additional request</label>
-<textarea bind:value = {formSubmission.additionalRequest} id="additional"placeholder="I would like a tui na with the massage together please" class=" bg-white rounded flex mb-2 border-2 border-transparent focus:border-emerald-900 focus:outline-none focus:border-2 focus-within:bg-amber-400 font-semibold h-20 w-50"></textarea>
+<textarea bind:value = {formSubmission.additionalRequest} id="additional"placeholder="I would like a female masseur" class=" bg-white rounded flex mb-2 border-2 border-transparent focus:border-emerald-900 focus:outline-none focus:border-2 focus-within:bg-amber-400 font-semibold h-20 w-50"></textarea>
 <button type="submit" class=" bg-white hover:bg-green-400 px-10">Submit</button>
 </form>
 </div>
+
+
+
+
+{#if warningText}
+<div class="flex flex-col items-center justify-center absolute 
+         top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+         h-45 w-80 bg-[#7d1b1f] rounded-2xl text-white font-semibold p-4 border-2 border-white">
+<div class="w-full text-center flex flex-col justify-center items-center">
+    <div class="flex font-bold text-white text-lg">Please pick at least 1 treatment</div>
+  </div>
+<button type="button" onclick={()=>{warningText=""}} class="bg-red-400 hover:bg-green-400" >Noted</button>
+</div>
+{/if}
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
 :global(.svelte-select) {
   --rmsc-primary: #d97706;

@@ -4,10 +4,9 @@ const appointmentSchema = new mongoose.Schema({
   name: {type: String},
   date: {type: String, required: true },        
   time: {type: String, required: true },  
-  treatments: [{
-    type: mongoose.Schema.Types.ObjectId,   
-    required: true
-  }],  //each appt can have multiple treatments, so we want to store this as an array of ObjectIDs where each ID corresponds to the ID in the treatments table.
+  standardTreatment:{type:String},
+  wellnessProgramme: {type:String},
+  packagedTreatment: {type:String},
   price:{type:Number},
   extraComments: { type: String },
 }, {
