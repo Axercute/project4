@@ -1,7 +1,8 @@
 // src/lib/server/db/mongo.js
 import mongoose from 'mongoose';
-import { DATABASE_URL } from '$env/static/private';
-
+// import { DATABASE_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+const DATABASE_URL = env.DATABASE_URL;
 let isConnected = false;
 
 export const startMongo=async()=> {

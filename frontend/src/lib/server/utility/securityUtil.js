@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken"
-import { SECRET } from "$env/static/private";
-
+// import { SECRET } from "$env/static/private";
+import { env } from '$env/dynamic/private';
+const SECRET = env.SECRET;
 //signs a new JWT with the payload. use a secret key in the env file. it is called when user logs in, to generate a token 
 const createJWT=(payload)=> {
     return jwt.sign(

@@ -1,4 +1,6 @@
-import { SECRET } from '$env/static/private';
+// import { SECRET } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+const SECRET=env.SECRET
 import jwt from "jsonwebtoken"
 export const handle=async({ event, resolve })=> {
     let token = event.request.headers.get("Authorization")
