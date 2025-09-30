@@ -2,7 +2,7 @@
 
 export const index = 7;
 let component_cache;
-export const component = async () => component_cache ??= (await import('../entries/pages/booking/_appointmentId_/_page.svelte.js')).default;
-export const imports = ["_app/immutable/nodes/7.CW5P_R-r.js","_app/immutable/chunks/CWj6FrbW.js","_app/immutable/chunks/DDNJlhGV.js","_app/immutable/chunks/DGUbBfuZ.js","_app/immutable/chunks/EtgRPtOJ.js","_app/immutable/chunks/BODkbvgv.js","_app/immutable/chunks/B0lz7bPj.js","_app/immutable/chunks/Cj2MYpe5.js"];
+export const component = async () => component_cache ??= (await import('../entries/pages/dashboard/_page.svelte.js')).default;
+export const imports = ["_app/immutable/nodes/7.BHhszbDw.js","_app/immutable/chunks/Bzak7iHL.js","_app/immutable/chunks/BIIzcwk0.js","_app/immutable/chunks/DLapP2ot.js","_app/immutable/chunks/D3iqVyHi.js","_app/immutable/chunks/BYU3jfti.js","_app/immutable/chunks/CELHddUu.js","_app/immutable/chunks/DE-R8t2k.js"];
 export const stylesheets = [];
 export const fonts = [];
