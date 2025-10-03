@@ -9,7 +9,7 @@
  onMount (async () => {
   const res = await fetch('/api/service');
   treatments = await res.json();
-  choices = [...new Set(treatments.map(t=>t.category).filter(c => c !== "Featured Treatment"&&c!=="consultation"))];
+  choices = [...new Set(treatments.map(t=>t.category).filter(c => c !== "Featured Treatment"&&c!=="Consultation"))];
   selectedChoice = choices[0];
   priceMenu = treatments.filter(t=>t.category ===selectedChoice);
  });

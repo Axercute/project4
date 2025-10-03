@@ -1,4 +1,6 @@
-import { e as ensure_array_like, a as attr_class } from "../../../chunks/index3.js";
+import { e as ensure_array_like, a as attr_class } from "../../../chunks/index2.js";
+import _w_to_rt_ from "wuchale/runtime";
+import { g as get } from "../../../chunks/loader.ssr.svelte.js";
 import { e as escape_html } from "../../../chunks/escaping.js";
 import { a as attr } from "../../../chunks/attributes.js";
 const contactUsInfo = [
@@ -17,6 +19,7 @@ const contactUsInfo = [
 ];
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
+    const _w_runtime_ = _w_to_rt_(get("main"));
     let choices = [
       ...new Set(contactUsInfo.map((element) => {
         return element.branch;
@@ -36,11 +39,11 @@ function _page($$renderer, $$props) {
       $$renderer2.push(`<div${attr_class(`px-4 py-2 font-semibold bg-red-400 border border-black text-white
                 ${selectedChoice === element ? "bg-red-800" : "text-red-800"} hover:cursor-pointer hover:bg-red-500`)}>${escape_html(element)}</div>`);
     }
-    $$renderer2.push(`<!--]--></div> <div class="bg-gradient-to-br from-[#7d1b1f] to-red-700 p-2 flex-center flex-col w-[75%] mx-auto mt-50 rounded-2xl outline-2 outline-black shadow-2xl shadow-cyan-800 md:w-2/3 xl:w-1/2"><div class="flex font-semibold text-white text-2xl text-center m-2">Our Clinic</div> <div class="flex font-semibold text-white text-center md:text-md m-2">Opening Hours：10am-10pm everyday</div> <!--[-->`);
+    $$renderer2.push(`<!--]--></div> <div class="bg-gradient-to-br from-[#7d1b1f] to-red-700 p-2 flex-center flex-col w-[75%] mx-auto mt-50 rounded-2xl outline-2 outline-black shadow-2xl shadow-cyan-800 md:w-2/3 xl:w-1/2"><div class="flex font-semibold text-white text-2xl text-center m-2">${escape_html(_w_runtime_.t(35))}</div> <div class="flex font-semibold text-white text-center md:text-md m-2">${escape_html(_w_runtime_.t(36))}</div> <!--[-->`);
     const each_array_1 = ensure_array_like(displayMenu);
     for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
       let element = each_array_1[$$index_1];
-      $$renderer2.push(`<div class="flex font-semibold text-white text-center m-2">${escape_html(element.address)}</div> <a${attr("href", `https://wa.me/${element.phone}?text=I would like to ask if you have...`)} target="_blank" class="bg-white rounded-md hover:bg-green-400 p-2 m-2">Click here to chat with us</a> <a${attr("href", element.googleMap)} target="_blank" class="bg-white mt-1 rounded-md hover:bg-green-400 p-2 m-2">Click to our branch</a>`);
+      $$renderer2.push(`<div class="flex font-semibold text-white text-center m-2">${escape_html(element.address)}</div> <a${attr("href", `https://wa.me/${element.phone}?text=I would like to ask if you have...`)} target="_blank" class="bg-white rounded-md hover:bg-green-400 p-2 m-2">${escape_html(_w_runtime_.t(37))}</a> <a${attr("href", element.googleMap)} target="_blank" class="bg-white mt-1 rounded-md hover:bg-green-400 p-2 m-2">${escape_html(_w_runtime_.t(38))}</a>`);
     }
     $$renderer2.push(`<!--]--></div>`);
   });

@@ -1,0 +1,370 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-01T05:40:24.985Z\n"
+"PO-Revision-Date: 2025-10-03T11:56:32.656Z\n"
+"Last-Translator: \n"
+"Language: en\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Sun"
+msgstr "Sun"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Mon"
+msgstr "Mon"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Tue"
+msgstr "Tue"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Wed"
+msgstr "Wed"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Thu"
+msgstr "Thu"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Fri"
+msgstr "Fri"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Sat"
+msgstr "Sat"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Previous"
+msgstr "Previous"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "MMMM yyyy"
+msgstr "MMMM yyyy"
+
+#: src/lib/calendar.svelte
+#: src/routes/test/+page.svelte
+msgid "Next"
+msgstr "Next"
+
+#: src/routes/navbar.svelte
+#: src/routes/navbar.svelte
+#: src/routes/navbar.svelte
+#: src/routes/+page.svelte
+#: src/lib/navbar.svelte
+#: src/lib/navbar.svelte
+#: src/lib/navbar.svelte
+msgid "Tui na"
+msgstr "Tui na"
+
+#: src/routes/+page.svelte
+msgid "Book Appointment"
+msgstr "Book Appointment"
+
+#: src/routes/+page.svelte
+msgid "Treatment Solution For:"
+msgstr "Treatment Solution For:"
+
+#: src/routes/+page.svelte
+msgid "Problems we tackle For:"
+msgstr "Problems we tackle For:"
+
+#: src/routes/navbar.svelte
+#: src/lib/navbar.svelte
+msgid "Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42 <0/>"
+msgstr "Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42 <0/>"
+
+#: src/routes/admin/+page.svelte
+msgid "Pleae enter your admin login details below"
+msgstr "Pleae enter your admin login details below"
+
+#: src/routes/admin/+page.svelte
+msgid "Email:"
+msgstr "Email:"
+
+#: src/routes/admin/+page.svelte
+msgid "Password:"
+msgstr "Password:"
+
+#: src/routes/admin/+page.svelte
+msgid "Sign In"
+msgstr "Sign In"
+
+#. placeholder {0}: arrayOfTreatments
+#: src/routes/booking/+page.svelte
+msgid "The treatment I booked is {0}."
+msgstr "The treatment I booked is {0}."
+
+#. placeholder {0}: arrayOfTreatments.join(",")
+#: src/routes/booking/+page.svelte
+msgid "The treatments I booked are {0}."
+msgstr "The treatments I booked are {0}."
+
+#. placeholder {0}: formSubmission.name
+#. placeholder {1}: price.toFixed(2)
+#. placeholder {2}: formSubmission.appointmentDate.toFormat('dd MMMM yyyy')
+#. placeholder {3}: formSubmission.appointmentTime
+#. placeholder {4}: treatmentMessage
+#. placeholder {5}: formSubmission.additionalRequest
+#: src/routes/booking/+page.svelte
+msgid "This is {0}, I would like to book a treatment at around ${1} on {2} at {3}.{4}.{5}"
+msgstr "This is {0}, I would like to book a treatment at around ${1} on {2} at {3}.{4}.{5}"
+
+#: src/routes/booking/+page.svelte
+msgid "Your name"
+msgstr "Your name"
+
+#: src/routes/booking/+page.svelte
+msgid "John"
+msgstr "John"
+
+#: src/routes/booking/+page.server.js
+#: src/routes/booking/+page.js
+#: src/routes/booking/+page.svelte
+msgid "Standard Treatment"
+msgstr "Standard Treatment"
+
+#: src/routes/booking/+page.svelte
+#: src/routes/booking/+page.svelte
+#: src/routes/booking/+page.svelte
+msgid "Select only if required"
+msgstr "Select only if required"
+
+#: src/routes/booking/+page.server.js
+#: src/routes/booking/+page.js
+#: src/routes/booking/+page.svelte
+msgid "TCM Wellness Program"
+msgstr "TCM Wellness Program"
+
+#: src/routes/booking/+page.svelte
+msgid "Packaged Treatment"
+msgstr "Packaged Treatment"
+
+#. placeholder {0}: price.toFixed(2)
+#: src/routes/booking/+page.svelte
+msgid "Cost Estimated: ${0}"
+msgstr "Cost Estimated: ${0}"
+
+#: src/routes/booking/+page.svelte
+msgid "Additional request"
+msgstr "Additional request"
+
+#: src/routes/booking/+page.svelte
+msgid "I would like a female masseur"
+msgstr "I would like a female masseur"
+
+#: src/routes/booking/+page.svelte
+msgid "Submit"
+msgstr "Submit"
+
+#: src/routes/booking/+page.svelte
+msgid "Please pick at least 1 treatment"
+msgstr "Please pick at least 1 treatment"
+
+#: src/routes/booking/+page.svelte
+msgid "Noted"
+msgstr "Noted"
+
+#: src/routes/contactUs/+page.svelte
+msgid "Our Clinic"
+msgstr "Our Clinic"
+
+#: src/routes/contactUs/+page.svelte
+msgid "Opening Hours：10am-10pm everyday"
+msgstr "Opening Hours：10am-10pm everyday"
+
+#: src/routes/contactUs/+page.svelte
+msgid "Click here to chat with us"
+msgstr "Click here to chat with us"
+
+#: src/routes/contactUs/+page.svelte
+msgid "Click to our branch"
+msgstr "Click to our branch"
+
+#. placeholder {0}: data?.user?.email
+#: src/routes/dashboard/+page.svelte
+msgid "Welcome back {0}"
+msgstr "Welcome back {0}"
+
+#. placeholder {0}: data.appointment.name
+#: src/routes/booking/[appointmentId]/+page.svelte
+msgid "Hi {0},"
+msgstr "Hi {0},"
+
+#: src/routes/booking/[appointmentId]/+page.svelte
+msgid "You have an upcoming appointment on <0/> at <1/>."
+msgstr "You have an upcoming appointment on <0/> at <1/>."
+
+#: src/routes/booking/[appointmentId]/+page.svelte
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Treatments booked:"
+msgstr "Treatments booked:"
+
+#: src/routes/booking/[appointmentId]/+page.svelte
+msgid "You have also requested..."
+msgstr "You have also requested..."
+
+#: src/routes/booking/[appointmentId]/+page.svelte
+msgid "Return to main site"
+msgstr "Return to main site"
+
+#: src/routes/booking/[appointmentId]/+page.svelte
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Loading your appointment..."
+msgstr "Loading your appointment..."
+
+#. placeholder {0}: element.price.toFixed(2)
+#: src/routes/dashboard/appointment/+page.svelte
+msgid "Total price roughly: ${0}"
+msgstr "Total price roughly: ${0}"
+
+#. placeholder {0}: appointment.appointment.name
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Your customer is {0},"
+msgstr "Your customer is {0},"
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "They have booked an upcoming appointment on <0/> at <1/>."
+msgstr "They have booked an upcoming appointment on <0/> at <1/>."
+
+#. placeholder {0}: element.english_name
+#. placeholder {1}: element.starting_price
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "{0}, price is ${1}"
+msgstr "{0}, price is ${1}"
+
+#. placeholder {0}: appointment.appointment.loyaltyPrice
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Their entry price is ${0}"
+msgstr "Their entry price is ${0}"
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "They have also requested..."
+msgstr "They have also requested..."
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Estimated price: <0>${0}</0>"
+msgstr "Estimated price: <0>${0}</0>"
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Delete this appointment"
+msgstr "Delete this appointment"
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Return back to handling appointments"
+msgstr "Return back to handling appointments"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Log Out"
+msgstr "Log Out"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Search by English name"
+msgstr "Search by English name"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Search by category"
+msgstr "Search by category"
+
+#: src/routes/dashboard/service-management/+page.svelte
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Add New Service"
+msgstr "Add New Service"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Action"
+msgstr "Action"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "English Name"
+msgstr "English Name"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Chinese Name"
+msgstr "Chinese Name"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Category"
+msgstr "Category"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Description"
+msgstr "Description"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Starting Price"
+msgstr "Starting Price"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Update"
+msgstr "Update"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Delete"
+msgstr "Delete"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Edit Service"
+msgstr "Edit Service"
+
+#: src/routes/dashboard/service-management/+page.svelte
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "English Name:"
+msgstr "English Name:"
+
+#: src/routes/dashboard/service-management/+page.svelte
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Chinese Name:"
+msgstr "Chinese Name:"
+
+#: src/routes/dashboard/service-management/+page.svelte
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Category:"
+msgstr "Category:"
+
+#: src/routes/dashboard/service-management/+page.svelte
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Description:"
+msgstr "Description:"
+
+#: src/routes/dashboard/service-management/+page.svelte
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Starting Price:"
+msgstr "Starting Price:"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Save"
+msgstr "Save"
+
+#: src/routes/dashboard/service-management/+page.svelte
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/routes/dashboard/service-management/+page.svelte
+msgid "Add Service"
+msgstr "Add Service"
+
+#: src/routes/booking/+page.server.js
+#: src/routes/booking/+page.js
+msgid "Package Price"
+msgstr "Package Price"
+
+#: src/routes/booking/+page.svelte
+msgid "Consultation"
+msgstr "Consultation"

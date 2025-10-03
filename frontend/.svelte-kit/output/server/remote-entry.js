@@ -361,10 +361,10 @@ function query(validate_or_fn, maybe_fn) {
           `Cannot call set on query '${__.name}' because it is not executed in the context of a command/form remote function`
         );
       }
-      const cache = get_cache(__, state2);
-      const key = stringify_remote_arg(arg, state2.transport);
       if (__.id) {
-        refreshes[__.id + "/" + key] = cache[key] = Promise.resolve(value);
+        const cache = get_cache(__, state2);
+        const key = stringify_remote_arg(arg, state2.transport);
+        refreshes[create_remote_cache_key(__.id, key)] = cache[key] = Promise.resolve(value);
       }
     };
     promise.refresh = () => {

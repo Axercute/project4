@@ -5,14 +5,11 @@ import {service,treatmentTitle} from "./logic"
 import SelectionBar from "$lib/selectionBar.svelte"
 import Calendar from '$lib/calendar.svelte';
 import { DateTime as dt } from 'luxon';
-// let seniorCheck = $state(service.senior[0])
-let consultation=$state("")
 let treatments=[];
-let standardTreatment=$state([]);
-let wellnessProgramme=$state([]);
-let packagedTreatment=$state([]);
 let warningText=$state(false)
 
+//testing
+let {data} =$props()
 //-------------logic for standard treatment, wellness and packaged treatment-------------------
 let formSubmission = $state({
 loyaltyCheck:"",
@@ -25,31 +22,18 @@ packagedTreatmentSelected:{starting_price:0},
 additionalRequest:"",
 price:"",
 })
-
+formSubmission.loyaltyCheck = data.consultation.find(el => el.english_name === "First")
 $effect(()=>{
   formSubmission.price=price
 }
 )
-
-import {onMount} from "svelte"
-onMount (async () => {
-const res = await fetch('/api/service');
-treatments = await res.json();
-standardTreatment=treatments.filter((element)=>{return element.category==="Standard Treatment"})
-wellnessProgramme=treatments.filter((element)=>{return element.category==="TCM Wellness Program"})
-packagedTreatment=treatments.filter((element)=>{return element.category==="Package Price"})
-consultation=treatments.filter((element)=>{return element.category==="consultation"})
-// console.log(consultation)
-formSubmission.loyaltyCheck = consultation.find(el => el.english_name === "First")
-});
-
 let price= $derived(Number(
 formSubmission.loyaltyCheck.starting_price+
 formSubmission.standardTreatmentSelected.starting_price+
 formSubmission.wellnessProgrammeSelected.starting_price+
 formSubmission.packagedTreatmentSelected.starting_price
 ))
-
+console.log(data)
 let arrayOfTreatments=$state([])
 let treatmentMessage=$state("")
 
@@ -125,12 +109,11 @@ for (let hour = openTime ; hour <= closeTime; hour++) {
 <form method="POST" onsubmit= {handleSubmit} class= "bg-gradient-to-br from-[#7d1b1f] to-red-700
 flex-center flex-col w-[75%] rounded-2xl outline-2 outline-white shadow-2xl shadow-cyan-800 p-2  md:w-1/3 ">
 <div class=" text-xl font-semibold text-[#E8C6A0]">Consultation</div>
-
-{#if !consultation}
+{#if !data.consultation}
 <div class="lds-dual-ring"></div>
 {:else}
 <div class="flex flex-row space-x-10">
-{#each consultation as element}
+{#each data.consultation as element}
 <label class="- hover:cursor-pointer">
 	<input type="radio" bind:group={formSubmission.loyaltyCheck} value={element} class="mt-2"/>
 	{element.english_name}
@@ -147,11 +130,11 @@ flex-center flex-col w-[75%] rounded-2xl outline-2 outline-white shadow-2xl shad
 <!-- <SelectionBar options={dateRange} selected={dateTitle} bind:value={formSubmission.appointmentDate}/> -->
 <SelectionBar options={resetTimeRange.map(e=>e.toFormat("h a"))} selected={formSubmission.appointmentTime} bind:value={formSubmission.appointmentTime}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">Standard Treatment</div>
-<SelectionBar options={standardTreatment} selected={"Select only if required"} bind:value={formSubmission.standardTreatmentSelected}/>
+<SelectionBar options={data.standardTreatment} selected={"Select only if required"} bind:value={formSubmission.standardTreatmentSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">TCM Wellness Program</div>
-<SelectionBar options={wellnessProgramme} selected={"Select only if required"} bind:value={formSubmission.wellnessProgrammeSelected}/>
+<SelectionBar options={data.wellnessProgramme} selected={"Select only if required"} bind:value={formSubmission.wellnessProgrammeSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl">Packaged Treatment</div>
-<SelectionBar options={packagedTreatment} selected={"Select only if required"} bind:value={formSubmission.packagedTreatmentSelected}/>
+<SelectionBar options={data.packagedTreatment} selected={"Select only if required"} bind:value={formSubmission.packagedTreatmentSelected}/>
 <div class="text-[#E8C6A0] font-semibold text-xl text-outline">Cost Estimated: ${price.toFixed(2)}</div>
 <!-- <div class="flex flex-row space-x-5">
 {#each service.senior as element}
@@ -180,17 +163,6 @@ flex-center flex-col w-[75%] rounded-2xl outline-2 outline-white shadow-2xl shad
 <button type="button" onclick={()=>{warningText=""}} class="bg-red-400 hover:bg-green-400" >Noted</button>
 </div>
 {/if}
-
-
-
-
-
-
-
-
-
-
-
 
 <style>
 :global(.svelte-select) {

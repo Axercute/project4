@@ -6,7 +6,8 @@
     "isEntry": true,
     "imports": [
       "_internal.js",
-      "_environment.js"
+      "_environment.js",
+      "_shared-server.js"
     ]
   },
   "_appointment.js": {
@@ -20,6 +21,16 @@
       "_escaping.js"
     ]
   },
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_state.svelte.js",
+      "_exports.js",
+      "_utils.js",
+      "_index3.js"
+    ]
+  },
   "_context.js": {
     "file": "chunks/context.js",
     "name": "context"
@@ -27,10 +38,6 @@
   "_environment.js": {
     "file": "chunks/environment.js",
     "name": "environment"
-  },
-  "_equality.js": {
-    "file": "chunks/equality.js",
-    "name": "equality"
   },
   "_escaping.js": {
     "file": "chunks/escaping.js",
@@ -48,10 +55,7 @@
     "file": "chunks/index.js",
     "name": "index",
     "imports": [
-      "_state.svelte.js",
-      "_exports.js",
-      "_utils.js",
-      "_index2.js",
+      "_client.js",
       "_context.js"
     ]
   },
@@ -59,18 +63,16 @@
     "file": "chunks/index2.js",
     "name": "index",
     "imports": [
-      "_utils2.js",
-      "_equality.js"
+      "_attributes.js",
+      "_false.js",
+      "_escaping.js",
+      "_context.js"
     ]
   },
   "_index3.js": {
     "file": "chunks/index3.js",
     "name": "index",
     "imports": [
-      "_attributes.js",
-      "_false.js",
-      "_utils2.js",
-      "_equality.js",
       "_escaping.js",
       "_context.js"
     ]
@@ -79,32 +81,52 @@
     "file": "chunks/internal.js",
     "name": "internal",
     "imports": [
-      "_index3.js",
-      "_utils2.js",
+      "_index2.js",
+      "_escaping.js",
       "_context.js",
-      "_environment.js"
+      "_environment.js",
+      "_shared-server.js"
     ],
     "dynamicImports": [
       "src/hooks.server.js"
     ]
   },
+  "_loader.ssr.svelte.js": {
+    "file": "chunks/loader.ssr.svelte.js",
+    "name": "loader.ssr.svelte",
+    "imports": [
+      "_loader.ssr.svelte2.js"
+    ]
+  },
+  "_loader.ssr.svelte2.js": {
+    "file": "chunks/loader.ssr.svelte2.js",
+    "name": "loader.ssr.svelte"
+  },
   "_loginStatus.js": {
     "file": "chunks/loginStatus.js",
     "name": "loginStatus",
     "imports": [
-      "_index2.js"
+      "_index3.js"
     ]
   },
   "_mongo.js": {
     "file": "chunks/mongo.js",
     "name": "mongo",
     "imports": [
-      "_private.js"
+      "_shared-server.js"
     ]
   },
-  "_private.js": {
-    "file": "chunks/private.js",
-    "name": "private"
+  "_runtime.js": {
+    "file": "chunks/runtime.js",
+    "name": "runtime",
+    "imports": [
+      "_index2.js",
+      "_escaping.js"
+    ]
+  },
+  "_shared-server.js": {
+    "file": "chunks/shared-server.js",
+    "name": "shared-server"
   },
   "_shared.js": {
     "file": "chunks/shared.js",
@@ -117,15 +139,11 @@
     "file": "chunks/state.svelte.js",
     "name": "state.svelte",
     "imports": [
-      "_utils2.js"
+      "_escaping.js"
     ]
   },
   "_utils.js": {
     "file": "chunks/utils.js",
-    "name": "utils"
-  },
-  "_utils2.js": {
-    "file": "chunks/utils2.js",
     "name": "utils"
   },
   "node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js": {
@@ -160,9 +178,10 @@
       "_environment.js",
       "_exports.js",
       "_utils.js",
-      "_index2.js",
-      "_internal.js",
-      "_shared.js"
+      "_index3.js",
+      "_shared-server.js",
+      "_shared.js",
+      "_internal.js"
     ]
   },
   "src/hooks.server.js": {
@@ -171,7 +190,19 @@
     "src": "src/hooks.server.js",
     "isDynamicEntry": true,
     "imports": [
-      "_private.js"
+      "_shared-server.js",
+      "_loader.ssr.svelte2.js"
+    ]
+  },
+  "src/routes/+layout.js": {
+    "file": "entries/pages/_layout.js",
+    "name": "entries/pages/_layout",
+    "src": "src/routes/+layout.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "virtual:wuchale/catalog/main/main/en?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js",
+      "virtual:wuchale/catalog/main/main/zh?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js",
+      "virtual:wuchale/catalog/main/main/th?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js"
     ]
   },
   "src/routes/+layout.svelte": {
@@ -180,15 +211,18 @@
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index3.js",
+      "_index2.js",
+      "_loader.ssr.svelte.js",
+      "_runtime.js",
       "_exports.js",
       "_utils.js",
-      "_escaping.js",
+      "_attributes.js",
       "_state.svelte.js",
-      "_loginStatus.js"
+      "_loginStatus.js",
+      "_escaping.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.DnMMylBs.css"
+      "_app/immutable/assets/_layout.BE3kxYA8.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -197,7 +231,8 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index3.js",
+      "_index2.js",
+      "_loader.ssr.svelte.js",
       "_exports.js",
       "_utils.js",
       "_attributes.js",
@@ -212,6 +247,8 @@
     "isEntry": true,
     "imports": [
       "_attributes.js",
+      "_escaping.js",
+      "_loader.ssr.svelte.js",
       "_exports.js",
       "_utils.js",
       "_state.svelte.js"
@@ -250,7 +287,7 @@
     "isEntry": true,
     "imports": [
       "_mongo.js",
-      "_private.js",
+      "_shared-server.js",
       "_appointment.js"
     ]
   },
@@ -269,22 +306,36 @@
       "_mongo.js"
     ]
   },
+  "src/routes/booking/+page.js": {
+    "file": "entries/pages/booking/_page.js",
+    "name": "entries/pages/booking/_page",
+    "src": "src/routes/booking/+page.js",
+    "isEntry": true
+  },
   "src/routes/booking/+page.svelte": {
     "file": "entries/pages/booking/_page.svelte.js",
     "name": "entries/pages/booking/_page.svelte",
     "src": "src/routes/booking/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_attributes.js",
-      "_escaping.js",
+      "_index2.js",
+      "_loader.ssr.svelte.js",
+      "_runtime.js",
       "_exports.js",
       "_utils.js",
+      "_attributes.js",
       "_state.svelte.js",
-      "_index3.js"
+      "_escaping.js"
     ],
     "css": [
       "_app/immutable/assets/_page.i7zvtD3Y.css"
     ]
+  },
+  "src/routes/booking/[appointmentId]/+page.js": {
+    "file": "entries/pages/booking/_appointmentId_/_page.js",
+    "name": "entries/pages/booking/_appointmentId_/_page",
+    "src": "src/routes/booking/[appointmentId]/+page.js",
+    "isEntry": true
   },
   "src/routes/booking/[appointmentId]/+page.svelte": {
     "file": "entries/pages/booking/_appointmentId_/_page.svelte.js",
@@ -292,10 +343,14 @@
     "src": "src/routes/booking/[appointmentId]/+page.svelte",
     "isEntry": true,
     "imports": [
+      "_index2.js",
+      "_loader.ssr.svelte.js",
+      "_runtime.js",
       "_exports.js",
       "_utils.js",
+      "_escaping.js",
       "_state.svelte.js",
-      "_index.js"
+      "_client.js"
     ]
   },
   "src/routes/contactUs/+page.svelte": {
@@ -304,7 +359,8 @@
     "src": "src/routes/contactUs/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index3.js",
+      "_index2.js",
+      "_loader.ssr.svelte.js",
       "_escaping.js",
       "_attributes.js"
     ]
@@ -315,7 +371,8 @@
     "src": "src/routes/dashboard/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_escaping.js",
+      "_loader.ssr.svelte.js",
+      "_runtime.js",
       "_exports.js",
       "_utils.js",
       "_state.svelte.js",
@@ -328,7 +385,9 @@
     "src": "src/routes/dashboard/appointment/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index3.js",
+      "_index2.js",
+      "_loader.ssr.svelte.js",
+      "_runtime.js",
       "_exports.js",
       "_utils.js",
       "_escaping.js",
@@ -341,6 +400,8 @@
     "src": "src/routes/dashboard/appointment/[appointmentId]/+page.svelte",
     "isEntry": true,
     "imports": [
+      "_escaping.js",
+      "_loader.ssr.svelte.js",
       "_exports.js",
       "_utils.js",
       "_state.svelte.js",
@@ -351,18 +412,7 @@
     "file": "entries/pages/dashboard/service-management/_page.svelte.js",
     "name": "entries/pages/dashboard/service-management/_page.svelte",
     "src": "src/routes/dashboard/service-management/+page.svelte",
-    "isEntry": true,
-    "imports": [
-      "_index3.js",
-      "_exports.js",
-      "_utils.js",
-      "_attributes.js",
-      "_state.svelte.js",
-      "_escaping.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.DVykY2jk.css"
-    ]
+    "isEntry": true
   },
   "src/routes/pricing/+page.svelte": {
     "file": "entries/pages/pricing/_page.svelte.js",
@@ -370,7 +420,7 @@
     "src": "src/routes/pricing/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index3.js",
+      "_index2.js",
       "_escaping.js"
     ]
   },
@@ -380,8 +430,27 @@
     "src": "src/routes/test/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index3.js",
+      "_index2.js",
+      "_loader.ssr.svelte.js",
       "_escaping.js"
     ]
+  },
+  "virtual:wuchale/catalog/main/main/en?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js": {
+    "file": "chunks/loader.svelte.js",
+    "name": "loader.svelte",
+    "src": "virtual:wuchale/catalog/main/main/en?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js",
+    "isDynamicEntry": true
+  },
+  "virtual:wuchale/catalog/main/main/th?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js": {
+    "file": "chunks/loader.svelte3.js",
+    "name": "loader.svelte",
+    "src": "virtual:wuchale/catalog/main/main/th?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js",
+    "isDynamicEntry": true
+  },
+  "virtual:wuchale/catalog/main/main/zh?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js": {
+    "file": "chunks/loader.svelte2.js",
+    "name": "loader.svelte",
+    "src": "virtual:wuchale/catalog/main/main/zh?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js",
+    "isDynamicEntry": true
   }
 }

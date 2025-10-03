@@ -2,7 +2,7 @@ import { s as startMongo } from "../../../../chunks/mongo.js";
 import mongoose from "mongoose";
 import crypto from "crypto-js";
 import jwt from "jsonwebtoken";
-import { S as SECRET } from "../../../../chunks/private.js";
+import { p as private_env } from "../../../../chunks/shared-server.js";
 import "../../../../chunks/appointment.js";
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String }
 });
 const User = mongoose.model("User", userSchema);
+const SECRET = private_env.SECRET;
 const createJWT = (payload) => {
   return jwt.sign(
     // data payload

@@ -1,6 +1,13 @@
-import { S as SECRET } from "./private.js";
+import { p as private_env } from "./shared-server.js";
 import jwt from "jsonwebtoken";
-const handle = async ({ event, resolve }) => {
+import "clsx";
+import { k as key, l as loadIDs, a as loadCatalog } from "./loader.ssr.svelte2.js";
+import { loadLocales } from "wuchale/load-utils/server";
+import "@sveltejs/kit/hooks";
+const locales = ["en", "zh", "th"];
+const SECRET = private_env.SECRET;
+loadLocales(key, loadIDs, loadCatalog, locales);
+const middleware = async ({ event, resolve }) => {
   let token = event.request.headers.get("Authorization");
   if (token) {
     token = token.replace("Bearer ", "");
@@ -18,6 +25,8 @@ const handle = async ({ event, resolve }) => {
   }
   return resolve(event);
 };
+const handle = middleware;
 export {
-  handle
+  handle,
+  middleware
 };

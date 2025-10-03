@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-  import Navbar from './navbar.svelte';
+  import Navbar from '$lib/navbar.svelte';
 	let { children } = $props();
   const navBarInfo = [
   {display:"Home", path:""},
@@ -16,17 +16,11 @@
   ];
 import {loginStatus} from "$lib/loginStatus"
 let finalNav=$state("")
-$effect(()=>{
-  if ($loginStatus===false) {
-    finalNav=navBarInfo
-    console.log("it is false now")
-  } else {
-    finalNav=adminBarInfo
-    console.log("it is true now")
-  }
-})
+
 </script>
-<Navbar navBarInfo={finalNav}/>
+{#if $loginStatus !== null}
+  <Navbar navBarInfo={$loginStatus ? adminBarInfo : navBarInfo}/>
+{/if}
 {@render children()}
   <style lang="postcss">
   @reference "tailwindcss";

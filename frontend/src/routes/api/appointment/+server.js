@@ -7,7 +7,7 @@ export const GET=async()=>{
     await startMongo();
     console.log('🔎 Looking for appointments...');
     const appointments = await Appointment.find();
-    console.log('✅ Appointments found:', appointments);
+    // console.log('✅ Appointments found:', appointments);
     return json(appointments, {status:201});
   } catch (err) {
     console.error('GET /appointment error:', err);

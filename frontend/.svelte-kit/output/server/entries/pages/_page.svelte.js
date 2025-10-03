@@ -1,4 +1,6 @@
-import { e as ensure_array_like, a as attr_class } from "../../chunks/index3.js";
+import { e as ensure_array_like, a as attr_class } from "../../chunks/index2.js";
+import _w_to_rt_ from "wuchale/runtime";
+import { g as get } from "../../chunks/loader.ssr.svelte.js";
 import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
 import "../../chunks/utils.js";
@@ -112,6 +114,7 @@ const problemDisplay = [
 ];
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
+    const _w_runtime_ = _w_to_rt_(get("main"));
     let descriptionUpdate = "";
     let textUpdate = "";
     console.log(void 0);
@@ -124,15 +127,15 @@ function _page($$renderer, $$props) {
     let currentIndex = 0;
     $$renderer2.push(`<div class="relative w-full h-64 md:h-100 xl:h-180"><!---->`);
     {
-      $$renderer2.push(`<img${attr("src", `/carousel/${carousel[currentIndex]}`)} alt="Tui na" class="w-full h-full object-cover absolute"${attr("key", carousel[currentIndex])}/>`);
+      $$renderer2.push(`<img${attr("src", `/carousel/${carousel[currentIndex]}`)}${attr("alt", _w_runtime_.t(10))} class="w-full h-full object-cover absolute"${attr("key", carousel[currentIndex])}/>`);
     }
-    $$renderer2.push(`<!----> <button class="absolute top-[80%] left-[50%] rounded-2xl text-white bg-red-800 shadow translate-x-[-50%] translate-y-[-50%] hover:bg-red-400">Book Appointment</button></div> <div class="flex-center text-white bg-red-800 font-semibold">Treatment Solution For:</div> <div class="flex flex-row flex-wrap justify-center items-center"><!--[-->`);
+    $$renderer2.push(`<!----> <button class="absolute top-[80%] left-[50%] rounded-2xl text-white bg-red-800 shadow translate-x-[-50%] translate-y-[-50%] hover:bg-red-400">${escape_html(_w_runtime_.t(11))}</button></div> <div class="flex-center text-white bg-red-800 font-semibold">${escape_html(_w_runtime_.t(12))}</div> <div class="flex flex-row flex-wrap justify-center items-center"><!--[-->`);
     const each_array = ensure_array_like(treatmentDisplay);
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let { image, text, description } = each_array[$$index];
       $$renderer2.push(`<div class="relative group w-40 h-40 flex justify-center items-center text-center m-2 hover:cursor-pointer"><img${attr("src", image)} alt="digestion" class="rounded-2xl absolute w-full h-full"/> <div class="absolute w-full h-full bg-black/50 rounded-2xl group-hover:bg-black/20"></div> <div class="text-white font-semibold absolute">${escape_html(text)}</div></div>`);
     }
-    $$renderer2.push(`<!--]--></div> <div class="flex-center text-white bg-red-800 font-semibold">Problems we tackle For:</div> <div class="flex flex-row flex-wrap justify-center items-center"><!--[-->`);
+    $$renderer2.push(`<!--]--></div> <div class="flex-center text-white bg-red-800 font-semibold">${escape_html(_w_runtime_.t(13))}</div> <div class="flex flex-row flex-wrap justify-center items-center"><!--[-->`);
     const each_array_1 = ensure_array_like(problemDisplay);
     for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
       let { image, text, description } = each_array_1[$$index_1];

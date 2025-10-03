@@ -6,11 +6,12 @@ import { e as assets, b as base, a as app_dir, r as relative, o as override, f a
 import * as devalue from "devalue";
 import { m as make_trackable, d as disable_search, a as decode_params, S as SCHEME, v as validate_layout_server_exports, b as validate_layout_exports, c as validate_page_server_exports, e as validate_page_exports, n as normalize_path, r as resolve, f as decode_pathname, g as validate_server_exports } from "./chunks/exports.js";
 import { b as base64_encode, t as text_decoder, d as text_encoder, g as get_relative_path, e as file_transport } from "./chunks/utils.js";
-import { r as readable, w as writable } from "./chunks/index2.js";
-import { p as public_env, r as read_implementation, o as options, s as set_private_env, a as set_public_env, g as get_hooks, b as set_read_implementation } from "./chunks/internal.js";
-import { p as parse_remote_arg, a as stringify, T as TRAILING_SLASH_PARAM, I as INVALIDATED_PARAM } from "./chunks/shared.js";
+import { r as readable, w as writable } from "./chunks/index3.js";
+import { b as public_env, s as set_private_env, a as set_public_env } from "./chunks/shared-server.js";
+import { c as create_remote_cache_key, p as parse_remote_arg, a as stringify, T as TRAILING_SLASH_PARAM, I as INVALIDATED_PARAM } from "./chunks/shared.js";
 import { parse, serialize } from "cookie";
 import * as set_cookie_parser from "set-cookie-parser";
+import { r as read_implementation, o as options, g as get_hooks, s as set_read_implementation } from "./chunks/internal.js";
 function with_resolvers() {
   let resolve2;
   let reject;
@@ -137,7 +138,9 @@ function method_not_allowed(mod, method) {
 }
 function allowed_methods(mod) {
   const allowed = ENDPOINT_METHODS.filter((method) => method in mod);
-  if ("GET" in mod || "HEAD" in mod) allowed.push("HEAD");
+  if ("GET" in mod && !("HEAD" in mod)) {
+    allowed.push("HEAD");
+  }
   return allowed;
 }
 function get_global_name(options2) {
@@ -1965,7 +1968,7 @@ ${indent}}`);
       for (const [info, cache] of remote_cache) {
         if (!info.id) continue;
         for (const key2 in cache) {
-          remote[key2 ? info.id + "/" + key2 : info.id] = await cache[key2];
+          remote[create_remote_cache_key(info.id, key2)] = await cache[key2];
         }
       }
       const replacer = (thing) => {

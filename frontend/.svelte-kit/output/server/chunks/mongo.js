@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import { D as DATABASE_URL } from "./private.js";
+import { p as private_env } from "./shared-server.js";
+const DATABASE_URL = private_env.DATABASE_URL;
 let isConnected = false;
 const startMongo = async () => {
   if (isConnected) {
