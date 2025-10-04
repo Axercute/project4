@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-01T05:40:24.985Z\n"
-"PO-Revision-Date: 2025-10-04T08:05:58.849Z\n"
+"PO-Revision-Date: 2025-10-04T08:15:12.916Z\n"
 "Last-Translator: \n"
 "Language: th\n"
 "Language-Team: \n"
@@ -87,15 +87,6 @@ msgstr "ปัญหาที่เราดูแล:"
 msgid "Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42 <0/>"
 msgstr "โปรโมชั่นเปิดร้าน! ปรึกษา + ทุยนา + ครอบแก้ว / กวาด เพียง $42 <0/>"
 
-#~ msgid "Pleae enter your admin login details below"
-#~ msgstr "กรุณากรอกรายละเอียดการเข้าสู่ระบบผู้ดูแลด้านล่าง"
-
-#~ msgid "Email:"
-#~ msgstr "อีเมล:"
-
-#~ msgid "Password:"
-#~ msgstr "รหัสผ่าน:"
-
 #: src/routes/admin/+page.svelte
 msgid "Sign In"
 msgstr "เข้าสู่ระบบ"
@@ -164,33 +155,6 @@ msgstr "คลิกที่นี่เพื่อแชทกับเรา
 msgid "Click to our branch"
 msgstr "คลิกเพื่อดูสาขา"
 
-#~ msgid "Log Out"
-#~ msgstr "ออกจากระบบ"
-
-#~ msgid "Search by English name"
-#~ msgstr "ค้นหาตามชื่อภาษาอังกฤษ"
-
-#~ msgid "Search by category"
-#~ msgstr "ค้นหาตามหมวดหมู่"
-
-#~ msgid "Add New Service"
-#~ msgstr "เพิ่มบริการใหม่"
-
-#~ msgid "Update"
-#~ msgstr "อัปเดต"
-
-#~ msgid "Delete"
-#~ msgstr "ลบ"
-
-#~ msgid "Save"
-#~ msgstr "บันทึก"
-
-#~ msgid "Cancel"
-#~ msgstr "ยกเลิก"
-
-#~ msgid "Add Service"
-#~ msgstr "เพิ่มบริการ"
-
 #: src/routes/booking/+page.server.js
 #: src/routes/booking/+page.js
 msgid "Package Price"
@@ -199,12 +163,12 @@ msgstr "ราคาของแพ็กเกจ"
 #. placeholder {0}: arrayOfTreatments
 #: src/routes/booking/+page.svelte
 msgid "The treatment I booked is {0}."
-msgstr ""
+msgstr "การรักษาที่ฉันจองคือ {0}."
 
 #. placeholder {0}: arrayOfTreatments.join(",")
 #: src/routes/booking/+page.svelte
 msgid "The treatments I booked are {0}."
-msgstr ""
+msgstr "การรักษาที่ฉันจองมี {0}."
 
 #. placeholder {0}: formSubmission.name
 #. placeholder {1}: price.toFixed(2)
@@ -214,158 +178,68 @@ msgstr ""
 #. placeholder {5}: formSubmission.additionalRequest
 #: src/routes/booking/+page.svelte
 msgid "This is {0}, I would like to book a treatment at around ${1} on {2} at {3}.{4}.{5}"
-msgstr ""
+msgstr "นี่คือ {0} ฉันต้องการจองการรักษาประมาณ ${1} ในวันที่ {2} เวลา {3}.{4}.{5}"
 
 #: src/routes/booking/+page.svelte
 #: src/routes/booking/+page.svelte
 #: src/routes/booking/+page.svelte
 msgid "Select only if required"
-msgstr ""
+msgstr "เลือกเฉพาะถ้าจำเป็น"
 
 #. placeholder {0}: price.toFixed(2)
 #: src/routes/booking/+page.svelte
 msgid "Cost Estimated: ${0}"
-msgstr ""
+msgstr "ประมาณราคาค่าใช้จ่าย: ${0}"
 
 #. placeholder {0}: data?.user?.email
 #: src/routes/dashboard/+page.svelte
 msgid "Welcome back {0}"
-msgstr ""
+msgstr "ยินดีต้อนรับกลับ {0}"
 
 #. placeholder {0}: data.appointment.name
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "Hi {0},"
-msgstr ""
+msgstr "สวัสดี {0},"
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "You have an upcoming appointment on <0/> at <1/>."
-msgstr ""
+msgstr "คุณมีนัดหมายในวันที่ <0/> เวลา <1/>."
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Treatments booked:"
-msgstr ""
+msgstr "การรักษาที่จอง:"
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "You have also requested..."
-msgstr ""
+msgstr "คุณยังได้ขอเพิ่มเติม..."
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "Return to main site"
-msgstr ""
+msgstr "กลับไปยังหน้าเว็บไซต์หลัก"
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Loading your appointment..."
-msgstr ""
+msgstr "กำลังโหลดการนัดหมายของคุณ..."
 
 #. placeholder {0}: element.price.toFixed(2)
 #: src/routes/dashboard/appointment/+page.svelte
 msgid "Total price roughly: ${0}"
-msgstr ""
-
-#~ msgid "Action"
-#~ msgstr ""
-
-#~ msgid "English Name"
-#~ msgstr ""
-
-#~ msgid "Chinese Name"
-#~ msgstr ""
-
-#~ msgid "Category"
-#~ msgstr ""
-
-#~ msgid "Description"
-#~ msgstr ""
-
-#~ msgid "Starting Price"
-#~ msgstr ""
-
-#~ msgid "Edit Service"
-#~ msgstr ""
-
-#~ msgid "English Name:"
-#~ msgstr ""
-
-#~ msgid "Chinese Name:"
-#~ msgstr ""
-
-#~ msgid "Category:"
-#~ msgstr ""
-
-#~ msgid "Description:"
-#~ msgstr ""
-
-#~ msgid "Starting Price:"
-#~ msgstr ""
-
-#. placeholder {0}: appointment.appointment.name
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "Your customer is {0},"
-msgstr ""
-
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "They have booked an upcoming appointment on <0/> at <1/>."
-msgstr ""
-
-#. placeholder {0}: element.english_name
-#. placeholder {1}: element.starting_price
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "{0}, price is ${1}"
-msgstr ""
-
-#. placeholder {0}: appointment.appointment.loyaltyPrice
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "Their entry price is ${0}"
-msgstr ""
-
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "They have also requested..."
-msgstr ""
-
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "Estimated price: <0>${0}</0>"
-msgstr ""
-
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "Delete this appointment"
-msgstr ""
-
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
-msgid "Return back to handling appointments"
-msgstr ""
+msgstr "ราคาทั้งหมดโดยประมาณ: ${0}"
 
 #: src/routes/admin/+page.svelte
 msgid "Enter your staff name and pin"
-msgstr ""
+msgstr "กรอกชื่อพนักงานและรหัส PIN ของคุณ"
 
 #: src/routes/admin/+page.svelte
 msgid "Staff Name:"
-msgstr ""
+msgstr "ชื่อพนักงาน:"
 
 #: src/routes/admin/+page.svelte
 msgid "Backspace"
-msgstr ""
-
-#~ msgid "Please enter all 6 digits of your PIN"
-#~ msgstr ""
-
-#~ msgid "Enter your staff name and PIN"
-#~ msgstr ""
+msgstr "ลบตัวอักษร"
 
 #: src/routes/admin/+page.svelte
 msgid "Pin:"
-msgstr ""
-
-#~ msgid "Enter exactly 6 digits"
-#~ msgstr ""
-
-#~ msgid "Enter your staff name and formSubmission.pin"
-#~ msgstr ""
-
-#~ msgid "formSubmission.pin:"
-#~ msgstr ""
-
-#~ msgid "Please enter your 6-digit PIN"
-#~ msgstr ""
+msgstr "รหัส PIN:"

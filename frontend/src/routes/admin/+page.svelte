@@ -7,31 +7,21 @@ let formSubmission = $state({
     staffName:"",
     pin:["", "", "", "", "",""]
 });
-  let inputs = [];
-  function handleInput(e, index) {
-    const value = e.target.value.replace(/\D/, "");
-    formSubmission.pin[index] = value;
+let inputs = [];
+const handleInput=(event, index)=> {
+const value = event.target.value.replace(/\D/, "");
+formSubmission.pin[index] = value;
+if (value && index < inputs.length - 1) {
+    inputs[index + 1].focus(); //focus on the current index
+}
+}
 
-    if (value && index < inputs.length - 1) {
-      inputs[index + 1].focus();
+// Handle backspace: move to previous input if empty
+const handleBackspace=(event, index)=> {
+    if (event.key === "Backspace" && !formSubmission.pin[index] && index > 0) {
+    inputs[index - 1].focus();
     }
-  }
-
-  // Handle backspace: move to previous input if empty
-  function handleBackspace(e, index) {
-    if (e.key === "Backspace" && !formSubmission.pin[index] && index > 0) {
-      inputs[index - 1].focus();
-    }
-  }
-
-  // Focus first input on mount
-  onMount(() => {
-    inputs[0]?.focus();
-  });
-
-
-
-
+}
 
 const handleSubmit = async () => {
 // try {
@@ -60,20 +50,19 @@ required
 </div>
 
 <label for ="pin" class="text-white">Pin:</label>
-    <div class="flex gap-2">
-      {#each formSubmission.pin as _, i}
+    <div class="flex gap-1">
+      {#each formSubmission.pin as _, index}
         <input
           type="password"
           maxlength="1"
           inputmode="numeric"
           placeholder="•"
-          bind:this={inputs[i]}
-          bind:value={formSubmission.pin[i]}
-          oninput={(e) => handleInput(e, i)}
-          onkeydown={(e) => handleBackspace(e, i)}
+          bind:this={inputs[index]}
+          bind:value={formSubmission.pin[index]}
+          oninput={(event) => handleInput(event, index)}
+          onkeydown={(event) => handleBackspace(event, index)}
           class="w-7 h-7 text-3xl text-center rounded-lg border"
-          required
-        />
+          required/>
       {/each}
     </div>
 
