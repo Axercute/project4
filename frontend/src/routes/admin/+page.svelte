@@ -7,7 +7,8 @@ let formSubmission = $state({
     staffName:"",
     pin:["", "", "", "", "",""]
 });
-let inputs = [];
+let inputs = []; //purpose to serve as reactive DOM for index
+
 const handleInput=(event, index)=> {
 const value = event.target.value.replace(/\D/, "");
 formSubmission.pin[index] = value;
@@ -21,6 +22,7 @@ const handleBackspace=(event, index)=> {
     if (event.key === "Backspace" && !formSubmission.pin[index] && index > 0) {
     inputs[index - 1].focus();
     }
+    
 }
 
 const handleSubmit = async () => {
@@ -32,6 +34,7 @@ const handleSubmit = async () => {
 //     } catch (err) {
 //     message = err.message;
 //     }
+formSubmission.pin=formSubmission.pin.join("")
 console.log(formSubmission)
 };
 </script>
@@ -61,6 +64,7 @@ required
           bind:value={formSubmission.pin[index]}
           oninput={(event) => handleInput(event, index)}
           onkeydown={(event) => handleBackspace(event, index)}
+          onfocus={() => formSubmission.pin[index] = ""}
           class="w-7 h-7 text-3xl text-center rounded-lg border"
           required/>
       {/each}
