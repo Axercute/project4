@@ -1,13 +1,12 @@
-import { e as ensure_array_like, a as attr_class } from "../../chunks/index2.js";
+import { a as attr, e as ensure_array_like, b as attr_class } from "../../chunks/index2.js";
 import _w_to_rt_ from "wuchale/runtime";
 import { g as get } from "../../chunks/loader.ssr.svelte.js";
 import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
 import "../../chunks/utils.js";
-import { a as attr } from "../../chunks/attributes.js";
 import "@sveltejs/kit/internal/server";
 import "../../chunks/state.svelte.js";
-import { e as escape_html } from "../../chunks/escaping.js";
+import { e as escape_html } from "../../chunks/context.js";
 const treatmentDisplay = [
   {
     image: "/treatments/treatment1.jpg",

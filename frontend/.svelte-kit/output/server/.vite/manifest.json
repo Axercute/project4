@@ -14,13 +14,6 @@
     "file": "chunks/appointment.js",
     "name": "appointment"
   },
-  "_attributes.js": {
-    "file": "chunks/attributes.js",
-    "name": "attributes",
-    "imports": [
-      "_escaping.js"
-    ]
-  },
   "_client.js": {
     "file": "chunks/client.js",
     "name": "client",
@@ -38,10 +31,6 @@
   "_environment.js": {
     "file": "chunks/environment.js",
     "name": "environment"
-  },
-  "_escaping.js": {
-    "file": "chunks/escaping.js",
-    "name": "escaping"
   },
   "_exports.js": {
     "file": "chunks/exports.js",
@@ -63,17 +52,14 @@
     "file": "chunks/index2.js",
     "name": "index",
     "imports": [
-      "_attributes.js",
-      "_false.js",
-      "_escaping.js",
-      "_context.js"
+      "_context.js",
+      "_false.js"
     ]
   },
   "_index3.js": {
     "file": "chunks/index3.js",
     "name": "index",
     "imports": [
-      "_escaping.js",
       "_context.js"
     ]
   },
@@ -82,7 +68,6 @@
     "name": "internal",
     "imports": [
       "_index2.js",
-      "_escaping.js",
       "_context.js",
       "_environment.js",
       "_shared-server.js"
@@ -121,7 +106,7 @@
     "name": "runtime",
     "imports": [
       "_index2.js",
-      "_escaping.js"
+      "_context.js"
     ]
   },
   "_shared-server.js": {
@@ -139,7 +124,7 @@
     "file": "chunks/state.svelte.js",
     "name": "state.svelte",
     "imports": [
-      "_escaping.js"
+      "_context.js"
     ]
   },
   "_utils.js": {
@@ -164,7 +149,7 @@
     "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
     "isEntry": true,
     "imports": [
-      "_escaping.js",
+      "_context.js",
       "_index.js"
     ]
   },
@@ -216,13 +201,12 @@
       "_runtime.js",
       "_exports.js",
       "_utils.js",
-      "_attributes.js",
       "_state.svelte.js",
       "_loginStatus.js",
-      "_escaping.js"
+      "_context.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.BE3kxYA8.css"
+      "_app/immutable/assets/_layout.DMvjdztw.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -235,9 +219,8 @@
       "_loader.ssr.svelte.js",
       "_exports.js",
       "_utils.js",
-      "_attributes.js",
       "_state.svelte.js",
-      "_escaping.js"
+      "_context.js"
     ]
   },
   "src/routes/admin/+page.svelte": {
@@ -246,12 +229,12 @@
     "src": "src/routes/admin/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_attributes.js",
-      "_escaping.js",
+      "_index2.js",
       "_loader.ssr.svelte.js",
       "_exports.js",
       "_utils.js",
-      "_state.svelte.js"
+      "_state.svelte.js",
+      "_context.js"
     ]
   },
   "src/routes/api/appointment/+server.js": {
@@ -323,9 +306,8 @@
       "_runtime.js",
       "_exports.js",
       "_utils.js",
-      "_attributes.js",
       "_state.svelte.js",
-      "_escaping.js"
+      "_context.js"
     ],
     "css": [
       "_app/immutable/assets/_page.i7zvtD3Y.css"
@@ -348,7 +330,7 @@
       "_runtime.js",
       "_exports.js",
       "_utils.js",
-      "_escaping.js",
+      "_context.js",
       "_state.svelte.js",
       "_client.js"
     ]
@@ -361,8 +343,7 @@
     "imports": [
       "_index2.js",
       "_loader.ssr.svelte.js",
-      "_escaping.js",
-      "_attributes.js"
+      "_context.js"
     ]
   },
   "src/routes/dashboard/+page.svelte": {
@@ -390,7 +371,7 @@
       "_runtime.js",
       "_exports.js",
       "_utils.js",
-      "_escaping.js",
+      "_context.js",
       "_state.svelte.js"
     ]
   },
@@ -400,7 +381,7 @@
     "src": "src/routes/dashboard/appointment/[appointmentId]/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_escaping.js",
+      "_context.js",
       "_loader.ssr.svelte.js",
       "_exports.js",
       "_utils.js",
@@ -412,7 +393,10 @@
     "file": "entries/pages/dashboard/service-management/_page.svelte.js",
     "name": "entries/pages/dashboard/service-management/_page.svelte",
     "src": "src/routes/dashboard/service-management/+page.svelte",
-    "isEntry": true
+    "isEntry": true,
+    "css": [
+      "_app/immutable/assets/_page.tn0RQdqM.css"
+    ]
   },
   "src/routes/pricing/+page.svelte": {
     "file": "entries/pages/pricing/_page.svelte.js",
@@ -421,7 +405,7 @@
     "isEntry": true,
     "imports": [
       "_index2.js",
-      "_escaping.js"
+      "_context.js"
     ]
   },
   "src/routes/test/+page.svelte": {
@@ -432,7 +416,7 @@
     "imports": [
       "_index2.js",
       "_loader.ssr.svelte.js",
-      "_escaping.js"
+      "_context.js"
     ]
   },
   "virtual:wuchale/catalog/main/main/en?importer=virtual:wuchale/proxy?importer=C:/Users/kwokc/OneDrive/Documents/project4/frontend/src/locales/loader.svelte.js": {

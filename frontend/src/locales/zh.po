@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-01T05:47:59.314Z\n"
-"PO-Revision-Date: 2025-10-03T11:55:17.608Z\n"
+"PO-Revision-Date: 2025-10-04T08:05:58.670Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -157,17 +157,14 @@ msgstr "已记录"
 msgid "Welcome back {0}"
 msgstr "欢迎回来 {0}"
 
-#: src/routes/admin/+page.svelte
-msgid "Pleae enter your admin login details below"
-msgstr "请输入管理员登录信息"
+#~ msgid "Pleae enter your admin login details below"
+#~ msgstr "请输入管理员登录信息"
 
-#: src/routes/admin/+page.svelte
-msgid "Email:"
-msgstr "邮箱："
+#~ msgid "Email:"
+#~ msgstr "邮箱："
 
-#: src/routes/admin/+page.svelte
-msgid "Password:"
-msgstr "密码："
+#~ msgid "Password:"
+#~ msgstr "密码："
 
 #: src/routes/admin/+page.svelte
 msgid "Sign In"
@@ -201,96 +198,68 @@ msgstr "疗程方案："
 msgid "Problems we tackle For:"
 msgstr "我们解决的问题："
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Log Out"
-msgstr "登出"
+#~ msgid "Log Out"
+#~ msgstr "登出"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Search by English name"
-msgstr "按英文名搜索"
+#~ msgid "Search by English name"
+#~ msgstr "按英文名搜索"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Search by category"
-msgstr "按类别搜索"
+#~ msgid "Search by category"
+#~ msgstr "按类别搜索"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Add New Service"
-msgstr "添加新服务"
+#~ msgid "Add New Service"
+#~ msgstr "添加新服务"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Action"
-msgstr "操作"
+#~ msgid "Action"
+#~ msgstr "操作"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "English Name"
-msgstr "英文名"
+#~ msgid "English Name"
+#~ msgstr "英文名"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Chinese Name"
-msgstr "中文名"
+#~ msgid "Chinese Name"
+#~ msgstr "中文名"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Category"
-msgstr "类别"
+#~ msgid "Category"
+#~ msgstr "类别"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Description"
-msgstr "描述"
+#~ msgid "Description"
+#~ msgstr "描述"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Starting Price"
-msgstr "起始价格"
+#~ msgid "Starting Price"
+#~ msgstr "起始价格"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Update"
-msgstr "更新"
+#~ msgid "Update"
+#~ msgstr "更新"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Delete"
-msgstr "删除"
+#~ msgid "Delete"
+#~ msgstr "删除"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Edit Service"
-msgstr "编辑服务"
+#~ msgid "Edit Service"
+#~ msgstr "编辑服务"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "English Name:"
-msgstr "英文名："
+#~ msgid "English Name:"
+#~ msgstr "英文名："
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Chinese Name:"
-msgstr "中文名："
+#~ msgid "Chinese Name:"
+#~ msgstr "中文名："
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Category:"
-msgstr "类别："
+#~ msgid "Category:"
+#~ msgstr "类别："
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Description:"
-msgstr "描述："
+#~ msgid "Description:"
+#~ msgstr "描述："
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Starting Price:"
-msgstr "起始价格："
+#~ msgid "Starting Price:"
+#~ msgstr "起始价格："
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Save"
-msgstr "保存"
+#~ msgid "Save"
+#~ msgstr "保存"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Cancel"
-msgstr "取消"
+#~ msgid "Cancel"
+#~ msgstr "取消"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Add Service"
-msgstr "添加服务"
+#~ msgid "Add Service"
+#~ msgstr "添加服务"
 
 #. placeholder {0}: data.appointment.name
 #: src/routes/booking/[appointmentId]/+page.svelte
@@ -368,3 +337,22 @@ msgstr "套餐价格"
 #: src/routes/booking/+page.svelte
 msgid "Consultation"
 msgstr "咨询"
+
+#: src/routes/admin/+page.svelte
+msgid "Enter your staff name and pin"
+msgstr "请输入员工姓名和密码"
+
+#: src/routes/admin/+page.svelte
+msgid "Staff Name:"
+msgstr "员工姓名："
+
+#: src/routes/admin/+page.svelte
+msgid "Backspace"
+msgstr "退格"
+
+#: src/routes/admin/+page.svelte
+msgid "Pin:"
+msgstr "密码："
+
+#~ msgid "Please enter your 6-digit PIN"
+#~ msgstr ""

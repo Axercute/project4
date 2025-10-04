@@ -1,15 +1,14 @@
-import { a as attr_class, b as bind_props, e as ensure_array_like } from "../../../chunks/index2.js";
+import { b as attr_class, c as bind_props, e as ensure_array_like, a as attr } from "../../../chunks/index2.js";
 import _w_to_rt_ from "wuchale/runtime";
 import { g as get } from "../../../chunks/loader.ssr.svelte.js";
 import { R as Runtime } from "../../../chunks/runtime.js";
 import "@sveltejs/kit/internal";
 import "../../../chunks/exports.js";
 import "../../../chunks/utils.js";
-import { a as attr } from "../../../chunks/attributes.js";
 import "@sveltejs/kit/internal/server";
 import "../../../chunks/state.svelte.js";
 import dayjs from "dayjs";
-import { e as escape_html } from "../../../chunks/escaping.js";
+import { e as escape_html } from "../../../chunks/context.js";
 import { DateTime } from "luxon";
 let today = dayjs();
 let days = 14;
@@ -113,7 +112,7 @@ function _page($$renderer, $$props) {
     let $$settled = true;
     let $$inner_renderer;
     function $$render_inner($$renderer3) {
-      $$renderer3.push(`<div class="h-screen justify-center items-center flex"><form method="POST" class="bg-gradient-to-br from-[#7d1b1f] to-red-700 flex-center flex-col w-[75%] rounded-2xl outline-2 outline-white shadow-2xl shadow-cyan-800 p-2 md:w-1/3"><div class="text-xl font-semibold text-[#E8C6A0]">${escape_html(_w_runtime_.t(22))}</div> `);
+      $$renderer3.push(`<div class="h-screen justify-center items-center flex"><form method="POST" class="bg-gradient-to-br from-[#7d1b1f] to-red-700 flex-center flex-col w-[75%] rounded-2xl outline-2 outline-white shadow-2xl shadow-cyan-800 p-2 md:w-1/3"><div class="text-xl font-semibold text-[#E8C6A0]">${escape_html(_w_runtime_.t(76))}</div> `);
       if (!data.consultation) {
         $$renderer3.push("<!--[-->");
         $$renderer3.push(`<div class="lds-dual-ring"></div>`);
@@ -127,7 +126,7 @@ function _page($$renderer, $$props) {
         }
         $$renderer3.push(`<!--]--></div>`);
       }
-      $$renderer3.push(`<!--]--> <div><label for="first_name" class="mb-2">${escape_html(_w_runtime_.t(23))}</label> <input type="text" id="first_name"${attr("placeholder", _w_runtime_.t(24))} class="text-center"${attr("value", formSubmission.name)} required/></div> `);
+      $$renderer3.push(`<!--]--> <div><label for="first_name" class="mb-2">${escape_html(_w_runtime_.t(22))}</label> <input type="text" id="first_name"${attr("placeholder", _w_runtime_.t(23))} class="text-center"${attr("value", formSubmission.name)} required/></div> `);
       Calendar($$renderer3, {
         get value() {
           return formSubmission.appointmentDate;
@@ -149,10 +148,10 @@ function _page($$renderer, $$props) {
           $$settled = false;
         }
       });
-      $$renderer3.push(`<!----> <div class="text-[#E8C6A0] font-semibold text-xl">${escape_html(_w_runtime_.t(25))}</div> `);
+      $$renderer3.push(`<!----> <div class="text-[#E8C6A0] font-semibold text-xl">${escape_html(_w_runtime_.t(24))}</div> `);
       SelectionBar($$renderer3, {
         options: data.standardTreatment,
-        selected: _w_runtime_.t(26),
+        selected: _w_runtime_.t(25),
         get value() {
           return formSubmission.standardTreatmentSelected;
         },
@@ -161,10 +160,10 @@ function _page($$renderer, $$props) {
           $$settled = false;
         }
       });
-      $$renderer3.push(`<!----> <div class="text-[#E8C6A0] font-semibold text-xl">${escape_html(_w_runtime_.t(27))}</div> `);
+      $$renderer3.push(`<!----> <div class="text-[#E8C6A0] font-semibold text-xl">${escape_html(_w_runtime_.t(26))}</div> `);
       SelectionBar($$renderer3, {
         options: data.wellnessProgramme,
-        selected: _w_runtime_.t(26),
+        selected: _w_runtime_.t(25),
         get value() {
           return formSubmission.wellnessProgrammeSelected;
         },
@@ -173,10 +172,10 @@ function _page($$renderer, $$props) {
           $$settled = false;
         }
       });
-      $$renderer3.push(`<!----> <div class="text-[#E8C6A0] font-semibold text-xl">${escape_html(_w_runtime_.t(28))}</div> `);
+      $$renderer3.push(`<!----> <div class="text-[#E8C6A0] font-semibold text-xl">${escape_html(_w_runtime_.t(27))}</div> `);
       SelectionBar($$renderer3, {
         options: data.packagedTreatment,
-        selected: _w_runtime_.t(26),
+        selected: _w_runtime_.t(25),
         get value() {
           return formSubmission.packagedTreatmentSelected;
         },
@@ -186,13 +185,13 @@ function _page($$renderer, $$props) {
         }
       });
       $$renderer3.push(`<!----> <div class="text-[#E8C6A0] font-semibold text-xl text-outline">`);
-      Runtime($$renderer3, { x: _w_runtime_.cx(29), a: [price.toFixed(2)] });
-      $$renderer3.push(`<!----></div> <label for="additional">${escape_html(_w_runtime_.t(30))}</label> <textarea id="additional"${attr("placeholder", _w_runtime_.t(31))} class="bg-white rounded flex mb-2 border-2 border-transparent focus:border-emerald-900 focus:outline-none focus:border-2 focus-within:bg-amber-400 font-semibold h-20 w-50">`);
+      Runtime($$renderer3, { x: _w_runtime_.cx(28), a: [price.toFixed(2)] });
+      $$renderer3.push(`<!----></div> <label for="additional">${escape_html(_w_runtime_.t(29))}</label> <textarea id="additional"${attr("placeholder", _w_runtime_.t(30))} class="bg-white rounded flex mb-2 border-2 border-transparent focus:border-emerald-900 focus:outline-none focus:border-2 focus-within:bg-amber-400 font-semibold h-20 w-50">`);
       const $$body = escape_html(formSubmission.additionalRequest);
       if ($$body) {
         $$renderer3.push(`${$$body}`);
       }
-      $$renderer3.push(`</textarea> <button type="submit" class="bg-white hover:bg-green-400 px-10">${escape_html(_w_runtime_.t(32))}</button></form></div> `);
+      $$renderer3.push(`</textarea> <button type="submit" class="bg-white hover:bg-green-400 px-10">${escape_html(_w_runtime_.t(31))}</button></form></div> `);
       {
         $$renderer3.push("<!--[!-->");
       }

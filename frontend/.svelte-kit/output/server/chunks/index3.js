@@ -1,5 +1,4 @@
-import { n as noop } from "./escaping.js";
-import { s as safe_not_equal } from "./context.js";
+import { n as noop, s as safe_not_equal } from "./context.js";
 import "clsx";
 const subscriber_queue = [];
 function readable(value, start) {

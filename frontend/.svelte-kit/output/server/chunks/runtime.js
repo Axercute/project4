@@ -1,5 +1,5 @@
 import { e as ensure_array_like } from "./index2.js";
-import { e as escape_html } from "./escaping.js";
+import { e as escape_html } from "./context.js";
 function Runtime($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     const { n = false, x, t, a } = $$props;

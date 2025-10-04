@@ -12,5 +12,6 @@ export const load = async ({url}) => {
     if (browser) {
         await loadLocale(locale)
     }
+
  return { locale };
 }

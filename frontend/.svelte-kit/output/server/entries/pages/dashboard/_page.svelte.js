@@ -14,7 +14,7 @@ function _page($$renderer, $$props) {
     loginStatus.set(false);
     let data;
     $$renderer2.push(`<div>`);
-    Runtime($$renderer2, { x: _w_runtime_.cx(39), a: [data?.user?.email] });
+    Runtime($$renderer2, { x: _w_runtime_.cx(38), a: [data?.user?.email] });
     $$renderer2.push(`<!----></div>`);
   });
 }

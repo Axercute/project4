@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-01T05:40:24.985Z\n"
-"PO-Revision-Date: 2025-10-03T11:56:32.656Z\n"
+"PO-Revision-Date: 2025-10-04T08:05:58.575Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -89,17 +89,14 @@ msgstr "Problems we tackle For:"
 msgid "Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42 <0/>"
 msgstr "Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42 <0/>"
 
-#: src/routes/admin/+page.svelte
-msgid "Pleae enter your admin login details below"
-msgstr "Pleae enter your admin login details below"
+#~ msgid "Pleae enter your admin login details below"
+#~ msgstr "Pleae enter your admin login details below"
 
-#: src/routes/admin/+page.svelte
-msgid "Email:"
-msgstr "Email:"
+#~ msgid "Email:"
+#~ msgstr "Email:"
 
-#: src/routes/admin/+page.svelte
-msgid "Password:"
-msgstr "Password:"
+#~ msgid "Password:"
+#~ msgstr "Password:"
 
 #: src/routes/admin/+page.svelte
 msgid "Sign In"
@@ -269,96 +266,68 @@ msgstr "Delete this appointment"
 msgid "Return back to handling appointments"
 msgstr "Return back to handling appointments"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Log Out"
-msgstr "Log Out"
+#~ msgid "Log Out"
+#~ msgstr "Log Out"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Search by English name"
-msgstr "Search by English name"
+#~ msgid "Search by English name"
+#~ msgstr "Search by English name"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Search by category"
-msgstr "Search by category"
+#~ msgid "Search by category"
+#~ msgstr "Search by category"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Add New Service"
-msgstr "Add New Service"
+#~ msgid "Add New Service"
+#~ msgstr "Add New Service"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Action"
-msgstr "Action"
+#~ msgid "Action"
+#~ msgstr "Action"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "English Name"
-msgstr "English Name"
+#~ msgid "English Name"
+#~ msgstr "English Name"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Chinese Name"
-msgstr "Chinese Name"
+#~ msgid "Chinese Name"
+#~ msgstr "Chinese Name"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Category"
-msgstr "Category"
+#~ msgid "Category"
+#~ msgstr "Category"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Description"
-msgstr "Description"
+#~ msgid "Description"
+#~ msgstr "Description"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Starting Price"
-msgstr "Starting Price"
+#~ msgid "Starting Price"
+#~ msgstr "Starting Price"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Update"
-msgstr "Update"
+#~ msgid "Update"
+#~ msgstr "Update"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Delete"
-msgstr "Delete"
+#~ msgid "Delete"
+#~ msgstr "Delete"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Edit Service"
-msgstr "Edit Service"
+#~ msgid "Edit Service"
+#~ msgstr "Edit Service"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "English Name:"
-msgstr "English Name:"
+#~ msgid "English Name:"
+#~ msgstr "English Name:"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Chinese Name:"
-msgstr "Chinese Name:"
+#~ msgid "Chinese Name:"
+#~ msgstr "Chinese Name:"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Category:"
-msgstr "Category:"
+#~ msgid "Category:"
+#~ msgstr "Category:"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Description:"
-msgstr "Description:"
+#~ msgid "Description:"
+#~ msgstr "Description:"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Starting Price:"
-msgstr "Starting Price:"
+#~ msgid "Starting Price:"
+#~ msgstr "Starting Price:"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Save"
-msgstr "Save"
+#~ msgid "Save"
+#~ msgstr "Save"
 
-#: src/routes/dashboard/service-management/+page.svelte
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Cancel"
-msgstr "Cancel"
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
 
-#: src/routes/dashboard/service-management/+page.svelte
-msgid "Add Service"
-msgstr "Add Service"
+#~ msgid "Add Service"
+#~ msgstr "Add Service"
 
 #: src/routes/booking/+page.server.js
 #: src/routes/booking/+page.js
@@ -368,3 +337,37 @@ msgstr "Package Price"
 #: src/routes/booking/+page.svelte
 msgid "Consultation"
 msgstr "Consultation"
+
+#: src/routes/admin/+page.svelte
+msgid "Enter your staff name and pin"
+msgstr "Enter your staff name and pin"
+
+#: src/routes/admin/+page.svelte
+msgid "Staff Name:"
+msgstr "Staff Name:"
+
+#: src/routes/admin/+page.svelte
+msgid "Backspace"
+msgstr "Backspace"
+
+#~ msgid "Please enter all 6 digits of your PIN"
+#~ msgstr "Please enter all 6 digits of your PIN"
+
+#~ msgid "Enter your staff name and PIN"
+#~ msgstr "Enter your staff name and PIN"
+
+#: src/routes/admin/+page.svelte
+msgid "Pin:"
+msgstr "Pin:"
+
+#~ msgid "Enter exactly 6 digits"
+#~ msgstr "Enter exactly 6 digits"
+
+#~ msgid "Enter your staff name and formSubmission.pin"
+#~ msgstr "Enter your staff name and formSubmission.pin"
+
+#~ msgid "formSubmission.pin:"
+#~ msgstr "formSubmission.pin:"
+
+#~ msgid "Please enter your 6-digit PIN"
+#~ msgstr "Please enter your 6-digit PIN"

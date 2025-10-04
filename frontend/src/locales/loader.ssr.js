@@ -1,9 +1,13 @@
 // This is just the default loader.
 // You can customize it however you want, it will not be overwritten once it exists and is not empty.
 
-import { loadCatalog, loadIDs, key, locales } from './proxy.js'
-import { loadLocales } from 'wuchale/load-utils/server'
+/// <reference types="wuchale/virtual" />
 
-// two exports
-export const get = await loadLocales(key, loadIDs, loadCatalog, locales)
+import { loadCatalog, loadIDs, key } from 'virtual:wuchale/proxy/sync' // because it's on the server
+import { currentCatalog } from 'wuchale/load-utils/server'
+
+export { loadCatalog, loadIDs, key } // for loading before runWithLocale
+
+// two exports, same function
+export const get = (/** @type {string} */ loadID) => currentCatalog(key, loadID)
 export default get

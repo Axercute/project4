@@ -1,5 +1,5 @@
-import { e as ensure_array_like, a as attr_class } from "../../../chunks/index2.js";
-import { e as escape_html } from "../../../chunks/escaping.js";
+import { e as ensure_array_like, b as attr_class } from "../../../chunks/index2.js";
+import { e as escape_html } from "../../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let treatments = [];

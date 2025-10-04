@@ -1,158 +1,158 @@
 <script>
-  import { onMount } from 'svelte';
-  import { goto } from '$app/navigation';
-  let services = [];
+//   import { onMount } from 'svelte';
+//   import { goto } from '$app/navigation';
+//   let services = [];
 
-let searchTitle = '';
-let searchCategory = '';
+// let searchTitle = '';
+// let searchCategory = '';
 
-  let isEditing = false;
-  let currentService = null;
-  let isAdding = false; // Track if we are adding a new service
-  let newService = {
-    english_name: '',
-    chinese_name: '',
-    category: '',
-    description: '',
-    starting_price: 0
-  };
+//   let isEditing = false;
+//   let currentService = null;
+//   let isAdding = false; // Track if we are adding a new service
+//   let newService = {
+//     english_name: '',
+//     chinese_name: '',
+//     category: '',
+//     description: '',
+//     starting_price: 0
+//   };
 
-  function logout() {
-localStorage.removeItem('token');
-window.location.href = '/admin';
+//   function logout() {
+// localStorage.removeItem('token');
+// window.location.href = '/admin';
 
-}
+// }
 
-$: filteredServices = services.filter(service =>
-  service.english_name.toLowerCase().includes(searchTitle.toLowerCase()) &&
-  service.category.toLowerCase().includes(searchCategory.toLowerCase())
-);
+// $: filteredServices = services.filter(service =>
+//   service.english_name.toLowerCase().includes(searchTitle.toLowerCase()) &&
+//   service.category.toLowerCase().includes(searchCategory.toLowerCase())
+// );
 
-//on mount function that fetches the data
-  onMount(async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      goto('/admin');
-      return;
-    }
+// //on mount function that fetches the data
+//   onMount(async () => {
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//       goto('/admin');
+//       return;
+//     }
 
-    const res = await fetch('http://localhost:3000/serviceManagement', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+//     const res = await fetch('http://localhost:3000/serviceManagement', {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
 
-    if (res.status === 401) {
-      window.location.href = '/admin';
-      return;
-    }
+//     if (res.status === 401) {
+//       window.location.href = '/admin';
+//       return;
+//     }
 
-    if (!res.ok) {
-      throw new Error('Failed to load services data');
-    }
+//     if (!res.ok) {
+//       throw new Error('Failed to load services data');
+//     }
 
-    services = await res.json();
-    console.log('Fetched services data:', services);
-  });
+//     services = await res.json();
+//     console.log('Fetched services data:', services);
+//   });
 
-  //add service
-const addService = async () => {
-  const token = localStorage.getItem('token');
-  if (!token) {
-    window.location.href = '/admin';
-    return;
-  }
+//   //add service
+// const addService = async () => {
+//   const token = localStorage.getItem('token');
+//   if (!token) {
+//     window.location.href = '/admin';
+//     return;
+//   }
 
-  const res = await fetch('http://localhost:3000/serviceManagement', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(newService),
-  });
+//   const res = await fetch('http://localhost:3000/serviceManagement', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Authorization: `Bearer ${token}`,
+//     },
+//     body: JSON.stringify(newService),
+//   });
 
-  if (res.ok) {
-    const addedService = await res.json();
-    services.push(addedService); // Add the new service to the list
-    // services = [...services, addedService];
-    isAdding = false;
-    console.log('New service added successfully');
-  } else {
-    console.error('Failed to add service');
-  }
-};
-
-
-  //function to edit services
-  //start edit
-   function editService(service) {
-    currentService = { ...service }; // Clone the service to edit
-    isEditing = true;
-  }
-
-  //cancel edit
-    function cancelEdit() {
-    isEditing = false;
-    currentService = null;
-  }
-
-  //send it to BE
-  async function updateService() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      window.location.href = '/admin';
-      return;
-    }
-
-    const res = await fetch(`http://localhost:3000/serviceManagement/${currentService._id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(currentService),
-    });
-    if (res.ok) {
-      // Update the local list with the updated service
-      services = services.map(service =>
-        service._id === currentService._id ? currentService : service
-      );
-      isEditing = false;
-      console.log('Service updated successfully');
-    } else {
-      console.error('Failed to update service');
-    }
-  }
+//   if (res.ok) {
+//     const addedService = await res.json();
+//     services.push(addedService); // Add the new service to the list
+//     // services = [...services, addedService];
+//     isAdding = false;
+//     console.log('New service added successfully');
+//   } else {
+//     console.error('Failed to add service');
+//   }
+// };
 
 
-  // Function to delete service
-  async function deleteService(serviceId) {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      window.location.href = '/admin';
-      return;
-    }
+//   //function to edit services
+//   //start edit
+//    function editService(service) {
+//     currentService = { ...service }; // Clone the service to edit
+//     isEditing = true;
+//   }
 
-    // Send DELETE request to backend
-    const res = await fetch(`http://localhost:3000/serviceManagement/${serviceId}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+//   //cancel edit
+//     function cancelEdit() {
+//     isEditing = false;
+//     currentService = null;
+//   }
 
-    if (res.ok) {
-// Remove the service from the local list if deletion was successful
-      services = services.filter(service => service._id !== serviceId);
-      console.log('Service deleted successfully');
-    } else {
-      console.error('Failed to delete service');
-    }
-  }
+//   //send it to BE
+//   async function updateService() {
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//       window.location.href = '/admin';
+//       return;
+//     }
+
+//     const res = await fetch(`http://localhost:3000/serviceManagement/${currentService._id}`, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify(currentService),
+//     });
+//     if (res.ok) {
+//       // Update the local list with the updated service
+//       services = services.map(service =>
+//         service._id === currentService._id ? currentService : service
+//       );
+//       isEditing = false;
+//       console.log('Service updated successfully');
+//     } else {
+//       console.error('Failed to update service');
+//     }
+//   }
+
+
+//   // Function to delete service
+//   async function deleteService(serviceId) {
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//       window.location.href = '/admin';
+//       return;
+//     }
+
+//     // Send DELETE request to backend
+//     const res = await fetch(`http://localhost:3000/serviceManagement/${serviceId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+
+//     if (res.ok) {
+// // Remove the service from the local list if deletion was successful
+//       services = services.filter(service => service._id !== serviceId);
+//       console.log('Service deleted successfully');
+//     } else {
+//       console.error('Failed to delete service');
+//     }
+//   }
 </script>
 
- <div class="flex justify-end items-center mt-3 mr-4">
+ <!-- <div class="flex justify-end items-center mt-3 mr-4">
     <a href="#" on:click={logout} class="text-red-600 hover:text-red-800">Log Out</a>
   </div>
 
@@ -174,10 +174,10 @@ const addService = async () => {
 </div>
 <div class="flex justify-center my-3">
  <button on:click={() => isAdding = true} class="px-4 py-2 text-white">Add New Service</button>
- </div>
+ </div> -->
 
  <!--mx auto = apply margins to left and righ, add 1rem of padding to the top-->
- <div class="container mx-auto py-4 overflow-x-auto">
+ <!-- <div class="container mx-auto py-4 overflow-x-auto">
   <table class="min-w-full border-collapse border-l border-r border-black">
     <thead>
       <tr class="bg-gray-100 border-t border-black">
@@ -206,11 +206,11 @@ const addService = async () => {
       {/each}
     </tbody>
   </table>
-  </div>
+  </div> -->
 
 
 <!--UPDATE -->
-  {#if isEditing}
+  <!-- {#if isEditing}
   <div class="modal">
     <div class="modal-content"> 
       <label for ="modal-title" style="color: #941117;">Edit Service</label>
@@ -236,11 +236,11 @@ const addService = async () => {
       </form>
     </div>
   </div>
-{/if}
+{/if} -->
 
 
 <!--Adding-->
-{#if isAdding}
+<!-- {#if isAdding}
   <div class="modal">
     <div class="modal-content">
       <label for ="modal-title" style="color: #941117;">Add New Service</label>
@@ -266,7 +266,7 @@ const addService = async () => {
     </div>
   </div>
 {/if}
-
+ -->
 
 <!-- modal css -->
 <style>

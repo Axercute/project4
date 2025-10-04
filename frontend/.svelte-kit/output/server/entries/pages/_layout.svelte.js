@@ -1,15 +1,14 @@
-import { s as store_get, e as ensure_array_like, a as attr_class, u as unsubscribe_stores } from "../../chunks/index2.js";
+import { a as attr, s as store_get, e as ensure_array_like, b as attr_class, u as unsubscribe_stores } from "../../chunks/index2.js";
 import _w_to_rt_ from "wuchale/runtime";
 import { g as get } from "../../chunks/loader.ssr.svelte.js";
 import { R as Runtime } from "../../chunks/runtime.js";
 import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
 import "../../chunks/utils.js";
-import { a as attr } from "../../chunks/attributes.js";
 import "@sveltejs/kit/internal/server";
 import "../../chunks/state.svelte.js";
 import { l as loginStatus } from "../../chunks/loginStatus.js";
-import { e as escape_html } from "../../chunks/escaping.js";
+import { e as escape_html } from "../../chunks/context.js";
 function Navbar($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     var $$store_subs;

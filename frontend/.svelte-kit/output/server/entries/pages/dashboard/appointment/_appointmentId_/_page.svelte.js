@@ -1,4 +1,4 @@
-import { e as escape_html } from "../../../../../chunks/escaping.js";
+import { e as escape_html } from "../../../../../chunks/context.js";
 import "clsx";
 import _w_to_rt_ from "wuchale/runtime";
 import { g as get } from "../../../../../chunks/loader.ssr.svelte.js";
@@ -14,7 +14,7 @@ function _page($$renderer, $$props) {
     page.params.appointmentId;
     {
       $$renderer2.push("<!--[!-->");
-      $$renderer2.push(`<div class="flex justify-center items-center min-h-screen bg-gray-50"><p class="text-gray-500 text-lg animate-pulse">${escape_html(_w_runtime_.t(45))}</p></div>`);
+      $$renderer2.push(`<div class="flex justify-center items-center min-h-screen bg-gray-50"><p class="text-gray-500 text-lg animate-pulse">${escape_html(_w_runtime_.t(44))}</p></div>`);
     }
     $$renderer2.push(`<!--]-->`);
   });
