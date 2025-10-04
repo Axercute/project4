@@ -1,5 +1,5 @@
 <script>
-export const contactUsInfo = [
+const contactUsInfo = [
   {address:"Maxwell Branch Address: 272, South Bridge Road, S058821 (Next to Buddha Tooth Relic Temple)",
     phone:"6582881687",
     branch:"Main Branch",

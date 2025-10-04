@@ -9,11 +9,11 @@
   {display:"Contact Us", path:"contactUs"},
   ]
 
-  const adminBarInfo = [
-    { display: 'Home', path: "" },
-    { display: 'Service Management', path: 'service-management' },
-    { display: 'Appointment Management', path: 'appointment' },
-  ];
+const adminBarInfo = [
+  { display: 'Home', path: "" },
+  { display: 'Service Management', path: 'service-management' },
+  { display: 'Appointment Management', path: 'appointment' },
+];
 import {loginStatus} from "$lib/loginStatus"
 let finalNav=$state("")
 

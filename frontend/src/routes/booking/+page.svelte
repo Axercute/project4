@@ -1,7 +1,6 @@
 <script>
 import { goto } from '$app/navigation';
 let senior = false
-import {service,treatmentTitle} from "./logic"
 import SelectionBar from "$lib/selectionBar.svelte"
 import Calendar from '$lib/calendar.svelte';
 import { DateTime as dt } from 'luxon';

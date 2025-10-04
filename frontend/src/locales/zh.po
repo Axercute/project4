@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01T05:47:59.314Z\n"
-"PO-Revision-Date: 2025-10-04T08:05:58.670Z\n"
+"POT-Creation-Date: 2025-10-04T15:21:06.149Z\n"
+"PO-Revision-Date: 2025-10-04T16:29:51.722Z\n"
 "Last-Translator: \n"
 "Language: zh\n"
 "Language-Team: \n"
@@ -11,6 +11,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "MIME-Version: 1.0\n"
+
+#: src/lib/navbar.svelte
+#: src/lib/navbar.svelte
+#: src/lib/navbar.svelte
+#: src/routes/+page.svelte
+msgid "Tui na"
+msgstr "推拿"
+
+#: src/lib/navbar.svelte
+msgid "Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42 <0/>"
+msgstr "盛大开业优惠！咨询 + 推拿 + 拔罐/刮痧仅需 $42 <0/>"
 
 #: src/lib/calendar.svelte
 #: src/routes/test/+page.svelte
@@ -50,7 +61,7 @@ msgstr "六"
 #: src/lib/calendar.svelte
 #: src/routes/test/+page.svelte
 msgid "Previous"
-msgstr "上月"
+msgstr "上个月"
 
 #: src/lib/calendar.svelte
 #: src/routes/test/+page.svelte
@@ -60,115 +71,44 @@ msgstr "yyyy年MM月"
 #: src/lib/calendar.svelte
 #: src/routes/test/+page.svelte
 msgid "Next"
-msgstr "下月"
+msgstr "下个月"
 
-#: src/routes/navbar.svelte
-#: src/routes/navbar.svelte
-#: src/routes/navbar.svelte
 #: src/routes/+page.svelte
-#: src/lib/navbar.svelte
-#: src/lib/navbar.svelte
-#: src/lib/navbar.svelte
-msgid "Tui na"
-msgstr "推拿"
+msgid "Book Appointment"
+msgstr "预约"
 
-#: src/routes/navbar.svelte
-#: src/lib/navbar.svelte
-msgid "Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42 <0/>"
-msgstr "盛大开业特惠！咨询 + 推拿 + 拔罐/刮痧仅需 $42 <0/>"
+#: src/routes/+page.svelte
+msgid "Treatment Solution For:"
+msgstr "治疗方案针对："
 
-#. placeholder {0}: arrayOfTreatments
-#: src/routes/booking/+page.svelte
-msgid "The treatment I booked is {0}."
-msgstr "我预约的疗程是 {0}。"
+#: src/routes/+page.svelte
+msgid "Problems we tackle For:"
+msgstr "我们解决的问题："
 
-#. placeholder {0}: arrayOfTreatments.join(",")
-#: src/routes/booking/+page.svelte
-msgid "The treatments I booked are {0}."
-msgstr "我预约的疗程包括 {0}。"
+#: src/routes/admin/+page.svelte
+msgid "Backspace"
+msgstr "退格"
 
-#. placeholder {0}: formSubmission.name
-#. placeholder {1}: price.toFixed(2)
-#. placeholder {2}: formSubmission.appointmentDate.toFormat('dd MMMM yyyy')
-#. placeholder {3}: formSubmission.appointmentTime
-#. placeholder {4}: treatmentMessage
-#. placeholder {5}: formSubmission.additionalRequest
-#: src/routes/booking/+page.svelte
-msgid "This is {0}, I would like to book a treatment at around ${1} on {2} at {3}.{4}.{5}"
-msgstr "我是 {0}，我想在 {2} 的 {3} 左右预约疗程，价格约 ${1}。{4}{5}"
+#: src/routes/admin/+page.svelte
+msgid "Enter your staff name and pin"
+msgstr "请输入员工姓名和密码"
 
-#: src/routes/booking/+page.svelte
-msgid "Your name"
-msgstr "您的姓名"
+#: src/routes/admin/+page.svelte
+msgid "Staff Name:"
+msgstr "员工姓名："
 
-#: src/routes/booking/+page.svelte
-msgid "John"
-msgstr "约翰"
+#: src/routes/admin/+page.svelte
+msgid "Pin:"
+msgstr "密码："
 
-#: src/routes/booking/+page.server.js
-#: src/routes/booking/+page.js
-#: src/routes/booking/+page.svelte
-msgid "Standard Treatment"
-msgstr "标准疗程"
-
-#: src/routes/booking/+page.svelte
-#: src/routes/booking/+page.svelte
-#: src/routes/booking/+page.svelte
-msgid "Select only if required"
-msgstr "仅在需要时选择"
-
-#: src/routes/booking/+page.server.js
-#: src/routes/booking/+page.js
-#: src/routes/booking/+page.svelte
-msgid "TCM Wellness Program"
-msgstr "中医养生方案"
-
-#: src/routes/booking/+page.svelte
-msgid "Packaged Treatment"
-msgstr "套餐疗程"
-
-#. placeholder {0}: price.toFixed(2)
-#: src/routes/booking/+page.svelte
-msgid "Cost Estimated: ${0}"
-msgstr "预估费用：${0}"
-
-#: src/routes/booking/+page.svelte
-msgid "Additional request"
-msgstr "额外要求"
-
-#: src/routes/booking/+page.svelte
-msgid "I would like a female masseur"
-msgstr "我希望由女性技师服务"
-
-#: src/routes/booking/+page.svelte
-msgid "Submit"
-msgstr "提交"
-
-#: src/routes/booking/+page.svelte
-msgid "Please pick at least 1 treatment"
-msgstr "请至少选择一个疗程"
-
-#: src/routes/booking/+page.svelte
-msgid "Noted"
-msgstr "已记录"
+#: src/routes/admin/+page.svelte
+msgid "Sign In"
+msgstr "登录"
 
 #. placeholder {0}: data?.user?.email
 #: src/routes/dashboard/+page.svelte
 msgid "Welcome back {0}"
 msgstr "欢迎回来 {0}"
-
-#~ msgid "Pleae enter your admin login details below"
-#~ msgstr "请输入管理员登录信息"
-
-#~ msgid "Email:"
-#~ msgstr "邮箱："
-
-#~ msgid "Password:"
-#~ msgstr "密码："
-
-#: src/routes/admin/+page.svelte
-msgid "Sign In"
-msgstr "登录"
 
 #: src/routes/contactUs/+page.svelte
 msgid "Our Clinic"
@@ -186,112 +126,112 @@ msgstr "点击这里与我们聊天"
 msgid "Click to our branch"
 msgstr "点击访问我们的分店"
 
-#: src/routes/+page.svelte
-msgid "Book Appointment"
-msgstr "预约"
-
-#: src/routes/+page.svelte
-msgid "Treatment Solution For:"
-msgstr "疗程方案："
-
-#: src/routes/+page.svelte
-msgid "Problems we tackle For:"
-msgstr "我们解决的问题："
-
-#~ msgid "Log Out"
-#~ msgstr "登出"
-
-#~ msgid "Search by English name"
-#~ msgstr "按英文名搜索"
-
-#~ msgid "Search by category"
-#~ msgstr "按类别搜索"
-
-#~ msgid "Add New Service"
-#~ msgstr "添加新服务"
-
-#~ msgid "Action"
-#~ msgstr "操作"
-
-#~ msgid "English Name"
-#~ msgstr "英文名"
-
-#~ msgid "Chinese Name"
-#~ msgstr "中文名"
-
-#~ msgid "Category"
-#~ msgstr "类别"
-
-#~ msgid "Description"
-#~ msgstr "描述"
-
-#~ msgid "Starting Price"
-#~ msgstr "起始价格"
-
-#~ msgid "Update"
-#~ msgstr "更新"
-
-#~ msgid "Delete"
-#~ msgstr "删除"
-
-#~ msgid "Edit Service"
-#~ msgstr "编辑服务"
-
-#~ msgid "English Name:"
-#~ msgstr "英文名："
-
-#~ msgid "Chinese Name:"
-#~ msgstr "中文名："
-
-#~ msgid "Category:"
-#~ msgstr "类别："
-
-#~ msgid "Description:"
-#~ msgstr "描述："
-
-#~ msgid "Starting Price:"
-#~ msgstr "起始价格："
-
-#~ msgid "Save"
-#~ msgstr "保存"
-
-#~ msgid "Cancel"
-#~ msgstr "取消"
-
-#~ msgid "Add Service"
-#~ msgstr "添加服务"
-
 #. placeholder {0}: data.appointment.name
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "Hi {0},"
-msgstr "您好 {0}，"
+msgstr "你好 {0}，"
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "You have an upcoming appointment on <0/> at <1/>."
-msgstr "您有一个预约，将在 <0/> 的 <1/>。"
+msgstr "您有一个即将到来的预约，时间为 <0/> 于 <1/>。"
 
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 #: src/routes/booking/[appointmentId]/+page.svelte
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Treatments booked:"
-msgstr "预约的疗程："
+msgstr "已预约的治疗："
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "You have also requested..."
-msgstr "您还提出了以下要求…"
+msgstr "您还请求了……"
 
 #: src/routes/booking/[appointmentId]/+page.svelte
 msgid "Return to main site"
-msgstr "返回主页"
+msgstr "返回主站"
 
-#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 #: src/routes/booking/[appointmentId]/+page.svelte
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Loading your appointment..."
-msgstr "正在加载您的预约…"
+msgstr "正在加载您的预约……"
+
+#. placeholder {0}: arrayOfTreatments
+#: src/routes/booking/+page.svelte
+msgid "The treatment I booked is {0}."
+msgstr "我预约的治疗是 {0}。"
+
+#. placeholder {0}: arrayOfTreatments.join(",")
+#: src/routes/booking/+page.svelte
+msgid "The treatments I booked are {0}."
+msgstr "我预约的治疗有 {0}。"
+
+#. placeholder {0}: formSubmission.name
+#. placeholder {1}: price.toFixed(2)
+#. placeholder {2}: formSubmission.appointmentDate.toFormat('dd MMMM yyyy')
+#. placeholder {3}: formSubmission.appointmentTime
+#. placeholder {4}: treatmentMessage
+#. placeholder {5}: formSubmission.additionalRequest
+#: src/routes/booking/+page.svelte
+msgid "This is {0}, I would like to book a treatment at around ${1} on {2} at {3}.{4}.{5}"
+msgstr "我是 {0}，我希望在 {2} 的 {3} 预约治疗，费用约为 ${1}。{4}{5}"
+
+#: src/routes/booking/+page.svelte
+msgid "Consultation"
+msgstr "咨询"
+
+#: src/routes/booking/+page.svelte
+msgid "Your name"
+msgstr "您的姓名"
+
+#: src/routes/booking/+page.svelte
+msgid "John"
+msgstr "约翰"
+
+#: src/routes/booking/+page.svelte
+msgid "Standard Treatment"
+msgstr "标准治疗"
+
+#: src/routes/booking/+page.svelte
+#: src/routes/booking/+page.svelte
+#: src/routes/booking/+page.svelte
+msgid "Select only if required"
+msgstr "仅在需要时选择"
+
+#: src/routes/booking/+page.svelte
+msgid "TCM Wellness Program"
+msgstr "中医养生方案"
+
+#: src/routes/booking/+page.svelte
+msgid "Packaged Treatment"
+msgstr "套餐治疗"
+
+#. placeholder {0}: price.toFixed(2)
+#: src/routes/booking/+page.svelte
+msgid "Cost Estimated: ${0}"
+msgstr "预计费用：${0}"
+
+#: src/routes/booking/+page.svelte
+msgid "Additional request"
+msgstr "额外要求"
+
+#: src/routes/booking/+page.svelte
+msgid "I would like a female masseur"
+msgstr "我希望由女性按摩师服务"
+
+#: src/routes/booking/+page.svelte
+msgid "Submit"
+msgstr "提交"
+
+#: src/routes/booking/+page.svelte
+msgid "Please pick at least 1 treatment"
+msgstr "请至少选择一项治疗"
+
+#: src/routes/booking/+page.svelte
+msgid "Noted"
+msgstr "已记录"
 
 #. placeholder {0}: element.price.toFixed(2)
 #: src/routes/dashboard/appointment/+page.svelte
 msgid "Total price roughly: ${0}"
-msgstr "总价约：${0}"
+msgstr "总费用约：${0}"
 
 #. placeholder {0}: appointment.appointment.name
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
@@ -300,7 +240,7 @@ msgstr "您的客户是 {0}，"
 
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "They have booked an upcoming appointment on <0/> at <1/>."
-msgstr "他们预约的时间为 <0/> 的 <1/>。"
+msgstr "他们已预约于 <0/> 的 <1/>。"
 
 #. placeholder {0}: element.english_name
 #. placeholder {1}: element.starting_price
@@ -311,48 +251,21 @@ msgstr "{0}，价格为 ${1}"
 #. placeholder {0}: appointment.appointment.loyaltyPrice
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Their entry price is ${0}"
-msgstr "入场价格为 ${0}"
+msgstr "他们的入场价为 ${0}"
 
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "They have also requested..."
-msgstr "他们还提出了以下要求…"
+msgstr "他们还请求了……"
 
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Estimated price: <0>${0}</0>"
-msgstr "预估费用：<0>${0}</0>"
+msgstr "预计价格：<0>${0}</0>"
 
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Delete this appointment"
-msgstr "删除此预约"
+msgstr ""
 
 #: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
 msgid "Return back to handling appointments"
-msgstr "返回预约管理"
+msgstr ""
 
-#: src/routes/booking/+page.server.js
-#: src/routes/booking/+page.js
-msgid "Package Price"
-msgstr "套餐价格"
-
-#: src/routes/booking/+page.svelte
-msgid "Consultation"
-msgstr "咨询"
-
-#: src/routes/admin/+page.svelte
-msgid "Enter your staff name and pin"
-msgstr "请输入员工姓名和密码"
-
-#: src/routes/admin/+page.svelte
-msgid "Staff Name:"
-msgstr "员工姓名："
-
-#: src/routes/admin/+page.svelte
-msgid "Backspace"
-msgstr "退格"
-
-#: src/routes/admin/+page.svelte
-msgid "Pin:"
-msgstr "密码："
-
-#~ msgid "Please enter your 6-digit PIN"
-#~ msgstr ""

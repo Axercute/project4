@@ -2,6 +2,7 @@
 import { signIn } from '$lib/authService';
 import { goto } from '$app/navigation';
 import { onMount } from 'svelte';
+import { jwtDecode } from 'jwt-decode';
 let message = $state("");
 let formSubmission = $state({
     staffName:"",
@@ -25,18 +26,26 @@ const handleBackspace=(event, index)=> {
     
 }
 
-const handleSubmit = async () => {
-// try {
-//     const formData = {email, password};
-//     const user = await signIn(formData); 
-//     message = 'Successfully logged in';
-//     goto('/dashboard');
-//     } catch (err) {
-//     message = err.message;
-//     }
+const handleSubmit = async (e) => {
+    e.preventDefault()
 formSubmission.pin=formSubmission.pin.join("")
 console.log(formSubmission)
-};
+const response = await fetch(`/api/login`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(formSubmission),
+});
+const data=await response.json()
+console.log(data)
+    if (data.jwt) {
+        localStorage.setItem('token', data.jwt);
+        const decoded = jwtDecode(data.jwt)
+        // await goto('/profile');
+        return decoded
+    }
+    if(!data.jwt){
+    throw new Error('Invalid response from server');}
+} 
 </script>
 
 <div class="h-screen justify-center items-center flex">

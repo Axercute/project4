@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-01T05:40:24.985Z\n"
-"PO-Revision-Date: 2025-10-04T08:15:12.916Z\n"
+"PO-Revision-Date: 2025-10-04T16:19:36.036Z\n"
 "Last-Translator: \n"
 "Language: th\n"
 "Language-Team: \n"
@@ -243,3 +243,51 @@ msgstr "ลบตัวอักษร"
 #: src/routes/admin/+page.svelte
 msgid "Pin:"
 msgstr "รหัส PIN:"
+
+#. placeholder {0}: appointment.appointment.name
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Your customer is {0},"
+msgstr ""
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "They have booked an upcoming appointment on <0/> at <1/>."
+msgstr ""
+
+#. placeholder {0}: element.english_name
+#. placeholder {1}: element.starting_price
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "{0}, price is ${1}"
+msgstr ""
+
+#. placeholder {0}: appointment.appointment.loyaltyPrice
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Their entry price is ${0}"
+msgstr ""
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "They have also requested..."
+msgstr ""
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Estimated price: <0>${0}</0>"
+msgstr ""
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Delete this appointment"
+msgstr ""
+
+#: src/routes/dashboard/appointment/[appointmentId]/+page.svelte
+msgid "Return back to handling appointments"
+msgstr ""
+
+#~ msgid "Maxwell Branch Address: 272, South Bridge Road, S058821 (Next to Buddha Tooth Relic Temple)"
+#~ msgstr ""
+
+#~ msgid "Main Branch"
+#~ msgstr ""
+
+#~ msgid "Tanjong Pagar Branch Address: 73 Tras St, #01-01, S079012 (Next to Tanjong Pagar MRT)"
+#~ msgstr ""
+
+#~ msgid "Sub Branch"
+#~ msgstr ""

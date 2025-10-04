@@ -3,7 +3,6 @@ let { value = $bindable(),selected,options } = $props();
 let open = $state("")
 let container=$state("")
 import {onMount} from "svelte"
-import { dateRange } from "./dateRange";
 onMount(() => {
   const handleClickOutside = (event) => {
     if (container && !container.contains(event.target)) {
