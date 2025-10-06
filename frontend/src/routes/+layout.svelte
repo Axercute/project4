@@ -1,6 +1,14 @@
 <script>
 	import '../app.css';
+  import {role} from "$lib/role"
   import Navbar from '$lib/navbar.svelte';
+  import Cookies from "js-cookie"
+  import { onMount } from 'svelte';
+  onMount(()=>{
+  const cookieRole = Cookies.get("role")
+  role.set(cookieRole)
+  })
+
 	let { children } = $props();
   const navBarInfo = [
   {display:"Home", path:""},
@@ -10,17 +18,14 @@
   ]
 
 const adminBarInfo = [
-  { display: 'Home', path: "" },
-  { display: 'Service Management', path: 'service-management' },
-  { display: 'Appointment Management', path: 'appointment' },
+  { display: 'Profile', path: "admin/login" },
+  { display:"Booking", path:"booking"},
+  { display:"Attendance", path:"attendance"},
+  { display: 'Customers', path: 'customers' },
+  { display: 'Staff', path: 'Staff' }
 ];
-import {loginStatus} from "$lib/loginStatus"
-let finalNav=$state("")
-
 </script>
-{#if $loginStatus !== null}
-  <Navbar navBarInfo={$loginStatus ? adminBarInfo : navBarInfo}/>
-{/if}
+<Navbar navBarInfo={$role==="boss" ? adminBarInfo : navBarInfo}/>
 {@render children()}
   <style lang="postcss">
   @reference "tailwindcss";

@@ -1,6 +1,6 @@
 <script>
 import {goto} from "$app/navigation"
-import {loginStatus} from "$lib/loginStatus"
+import {role} from "$lib/role"
 let {navBarInfo}=$props() 
 let open = $state(false)
 const toggleOpen =(event)=>{event.stopPropagation();open=true}
@@ -19,23 +19,17 @@ window.removeEventListener('click', toggleClose);
 onclick={()=>{goto(`/`)}}/>
 <!--Desktop and Ipad-->
 <div class="hidden md:flex space-x-10 text-white font-semibold text-xl">
-{#if $loginStatus===false}
-{#each navBarInfo as { display, path }}
-<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
-<div class="cursor-pointer hover:text-amber-300" onclick={() => goto(`/${path}`)}>{display}</div>
-{/each}
-{:else}
 {#each navBarInfo as { display, path }}
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
 <div
 class="cursor-pointer hover:text-amber-300"
-onclick={() => goto(`/dashboard/${path}`)}
+onclick={() => goto(`/${path}`)}
 >
 {display}
 </div>
 {/each}
-{/if}
 </div>
+
 </div>
 <!--Mobile version-->
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
@@ -58,17 +52,11 @@ class={`fixed transition-[right] z-11 duration-500 ease-in-out ${open ? 'right-0
 <span class="absolute inset-0 w-full h-1 bg-amber-400 -rotate-45 origin-center"></span>
 </div>
 </div>
-{#if $loginStatus===false}
 {#each navBarInfo as {display,path}}
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
 <div onclick={(event)=>{goto(`/${path}`);toggleClose()}} class="text-right font-semibold mr-2">{display}</div> 
 {/each}
-{:else}
-{#each navBarInfo as { display, path }}
-<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
-<div class="text-right font-semibold mr-2" onclick={() => goto(`/dashboard/${path}`)}>{display}</div>
-{/each}
-{/if}
+
 <div class=" bg-amber-600 m-2 text-white text-right font-semibold">Grand Opening Sale! Consultation + TuiNa + Cupping / Scraping for only $42
 <img src="/tuipic.jpg"alt="Tui na" class="w-full mr-3 hover:cursor-pointer"/>
 </div> 

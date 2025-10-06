@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-01T05:40:24.985Z\n"
-"PO-Revision-Date: 2025-10-04T16:19:36.036Z\n"
+"PO-Revision-Date: 2025-10-06T01:41:30.928Z\n"
 "Last-Translator: \n"
 "Language: th\n"
 "Language-Team: \n"
@@ -291,3 +291,7 @@ msgstr ""
 
 #~ msgid "Sub Branch"
 #~ msgstr ""
+
+#: src/routes/admin/login/+page.svelte
+msgid "wow"
+msgstr ""

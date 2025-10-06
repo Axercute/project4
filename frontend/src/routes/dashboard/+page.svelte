@@ -1,7 +1,7 @@
 <script>
 import { goto } from '$app/navigation';
 import { onMount } from 'svelte'
-import {loginStatus} from "$lib/loginStatus"
+import {loginStatus} from "$lib/role"
 loginStatus.set(false)
 
 const logout=()=> {

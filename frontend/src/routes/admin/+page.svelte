@@ -1,4 +1,5 @@
 <script>
+import Cookies from 'js-cookie';
 import { signIn } from '$lib/authService';
 import { goto } from '$app/navigation';
 import { onMount } from 'svelte';
@@ -8,7 +9,8 @@ let formSubmission = $state({
     staffName:"",
     pin:["", "", "", "", "",""]
 });
-let inputs = []; //purpose to serve as reactive DOM for index
+
+let inputs = $state([]) //purpose to serve as reactive DOM for index
 
 const handleInput=(event, index)=> {
 const value = event.target.value.replace(/\D/, "");
@@ -27,7 +29,7 @@ const handleBackspace=(event, index)=> {
 }
 
 const handleSubmit = async (e) => {
-    e.preventDefault()
+e.preventDefault()
 formSubmission.pin=formSubmission.pin.join("")
 console.log(formSubmission)
 const response = await fetch(`/api/login`, {
@@ -37,13 +39,15 @@ const response = await fetch(`/api/login`, {
 });
 const data=await response.json()
 console.log(data)
-    if (data.jwt) {
-        localStorage.setItem('token', data.jwt);
-        const decoded = jwtDecode(data.jwt)
-        // await goto('/profile');
-        return decoded
-    }
-    if(!data.jwt){
+if (data.jwt) {
+    Cookies.set('token', data.jwt, { expires: 1, path: '/' });
+    const decoded = jwtDecode(data.jwt)
+    await goto(`/admin/login`);
+    return decoded
+}
+if(!data.jwt){
+    alert("wrong info")
+    goto("/")
     throw new Error('Invalid response from server');}
 } 
 </script>
@@ -54,11 +58,7 @@ flex-center flex-col w-[75%] rounded-2xl outline-2 outline-white shadow-2xl shad
 <div class="text-white m-2 font-semibold text-center">Enter your staff name and pin</div>
  <div>
 <label for ="staffName" class="text-white">Staff Name:</label>
-<input id = "staffName"
-type="name"
-bind:value={formSubmission.staffName}
-required
-/>
+<input id = "staffName" type="name" bind:value={formSubmission.staffName} required/>
 </div>
 
 <label for ="pin" class="text-white">Pin:</label>
