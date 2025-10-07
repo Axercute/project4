@@ -15,7 +15,7 @@ export const POST=async({request})=>{
     if (!userFound) { // not found
         return json("User not found")
     }
-    const payload = { staffName: userFound.staffName,role: userFound.role };
+    const payload = { staffName: userFound.staffName, _id:userFound._id,role:userFound.role };
     // create a token
     const token = createJWT(payload);
     //update the user record with this new jwt for session tracking

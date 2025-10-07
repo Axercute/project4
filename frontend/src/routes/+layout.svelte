@@ -1,12 +1,11 @@
 <script>
 	import '../app.css';
-  import {role} from "$lib/role"
+  import {role} from "$lib/globalView"
   import Navbar from '$lib/navbar.svelte';
   import Cookies from "js-cookie"
   import { onMount } from 'svelte';
   onMount(()=>{
-  const cookieRole = Cookies.get("role")
-  role.set(cookieRole)
+  role.set(Cookies.get("role"))
   })
 
 	let { children } = $props();

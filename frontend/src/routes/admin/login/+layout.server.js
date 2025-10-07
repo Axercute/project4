@@ -4,19 +4,26 @@ import { startMongo } from '$lib/server/db/mongo.js';
 import { error } from '@sveltejs/kit';
 import jwt from "jsonwebtoken"
 const SECRET=env.SECRET
-export const load = async ({cookies}) => {
+//for jwt check
+export const load = async ({cookies,fetch}) => {
 try{
     const token = cookies.get('token')
-    const user = jwt.verify(token, env.SECRET);
-    cookies.set("role", user.role, {
+    const jwtDecoded = jwt.verify(token, env.SECRET);
+    cookies.set("role", jwtDecoded.role, {
     path: "/",
     httpOnly: false // make it readable by js-cookie
     });
     // if (!token) {
     //   return;
     // }
-    // await startMongo()
-    return {user}
+    await startMongo()
+    const userX = await User.findById(jwtDecoded._id).lean();
+    console.log(userX)
+    const user = {
+    ...userX,
+    _id: userX._id.toString()//for serialize
+};
+return { user };
 }
     catch(err){
     throw error(501,'not logged in');

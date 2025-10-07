@@ -1,6 +1,6 @@
 <script>
 import {goto} from "$app/navigation"
-import {role} from "$lib/role"
+import {role} from "$lib/globalView"
 let {navBarInfo}=$props() 
 let open = $state(false)
 const toggleOpen =(event)=>{event.stopPropagation();open=true}
