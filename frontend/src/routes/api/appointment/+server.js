@@ -21,8 +21,7 @@ export const POST=async({request})=>{
     const data= await request.json();
     console.log('🔎 Creating appointment...');
     const newAppointment = await Appointment.create({name:data.name,date:data.appointmentDate,time:data.appointmentTime,
-    standardTreatment:data.standardTreatmentSelected.english_name,wellnessProgramme:data.wellnessProgrammeSelected.english_name,
-    packagedTreatment:data.packagedTreatmentSelected.english_name,price:data.price,extraComments:data.additionalRequest,
+    treatments:data.treatments,price:data.price,extraComments:data.additionalRequest,
     loyaltyPrice:data.loyaltyCheck.starting_price
     })
     console.log("Appointment created ✅",newAppointment)//for BE to see

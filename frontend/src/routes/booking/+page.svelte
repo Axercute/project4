@@ -15,9 +15,9 @@ loyaltyCheck:"",
 name:"",
 appointmentDate:dt.now(),
 appointmentTime:dt.now().plus({hours:1}).toFormat("h a"),
-standardTreatmentSelected:{starting_price:0},
-wellnessProgrammeSelected:{starting_price:0},
-packagedTreatmentSelected:{starting_price:0},
+standardTreatmentSelected:{starting_price:0,english_name: ""},
+wellnessProgrammeSelected:{starting_price:0,english_name: ""},
+packagedTreatmentSelected:{starting_price:0,english_name: ""},
 additionalRequest:"",
 price:"",
 })
@@ -33,6 +33,7 @@ formSubmission.wellnessProgrammeSelected.starting_price+
 formSubmission.packagedTreatmentSelected.starting_price
 ))
 let arrayOfTreatments=$state([])
+let submissionTreatments=$state([])
 let treatmentMessage=$state("")
 
 let finalMessage = $state("")
@@ -41,16 +42,18 @@ const handleSubmit=async(event)=> {
   event.preventDefault();
   if(!formSubmission.standardTreatmentSelected.english_name&&!formSubmission.wellnessProgrammeSelected.english_name&&!formSubmission.packagedTreatmentSelected.english_name) {
   warningText=true
-  return;
+  return; //doing this for the whatsapp message
 }
-
-if(formSubmission.standardTreatmentSelected.english_name){
-  arrayOfTreatments.push(formSubmission.standardTreatmentSelected.english_name)}
+if(formSubmission.standardTreatmentSelected.english_name){//one is for submission, other one isn't
+  arrayOfTreatments.push(formSubmission.standardTreatmentSelected.english_name)
+  submissionTreatments.push(formSubmission.standardTreatmentSelected)}
 if(formSubmission.wellnessProgrammeSelected.english_name){
   arrayOfTreatments.push(formSubmission.wellnessProgrammeSelected.english_name)
+  submissionTreatments.push(formSubmission.wellnessProgrammeSelected)
 }
 if(formSubmission.packagedTreatmentSelected.english_name){
   arrayOfTreatments.push(formSubmission.packagedTreatmentSelected.english_name)
+  submissionTreatments.push(formSubmission.packagedTreatmentSelected)
 }
 if(arrayOfTreatments.length===1){
   treatmentMessage=`The treatment I booked is ${arrayOfTreatments}.`
@@ -60,20 +63,28 @@ else{
 }
 finalMessage=`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate.toFormat('dd MMMM yyyy')} at ${formSubmission.appointmentTime}.${treatmentMessage}.${formSubmission.additionalRequest}`
 
-console.log(formSubmission)
+const finalFormSubmission =$state({
+loyaltyCheck:formSubmission.loyaltyCheck,
+name:formSubmission.name,
+appointmentDate:formSubmission.appointmentDate,
+appointmentTime:formSubmission.appointmentTime,
+additionalRequest:formSubmission.additionalRequest,
+price:formSubmission.price,
+treatments:submissionTreatments
+})
 
-// const response = await fetch('/api/appointment', {
-//   method: 'POST',
-//   headers: {
-//   'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify(formSubmission)
-// });
+const response = await fetch('/api/appointment', {
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(finalFormSubmission)
+});
 
-// const result = await response.json();
-// const link = result._id
-// await goto(`/booking/${link}`)
-// window.open(`https://wa.me/6582881687?text=${finalMessage}`, "_blank");
+const result = await response.json();
+const link = result._id
+await goto(`/booking/${link}`)
+window.open(`https://wa.me/6582881687?text=${finalMessage}`, "_blank");
 }
 
 //Date logic from here onwards

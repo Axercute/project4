@@ -35,6 +35,11 @@ let filteredMenu = $state(choices.filter(element=>dt.fromISO(element.date).toFor
       onclick={(event)=>{enterParams(element._id)}}>
         <div class="mb-1 text-lg font-bold">{element.name}</div>
         <div class="mb-2 text-sm">{element.time}</div>
+          <ol class="list-decimal list-inside text-green-400">
+          {#each element.treatments as miniElement}
+            <li>{miniElement.english_name}</li>
+          {/each}
+        </ol>
         <div class="text-right text-md font-bold">Total price roughly: ${element.price.toFixed(2)}</div>
       </div>
     {/each}

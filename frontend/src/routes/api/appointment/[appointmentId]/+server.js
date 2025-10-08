@@ -5,11 +5,10 @@ import { json } from "@sveltejs/kit";
 export const GET=async({params})=>{
   try {
     await startMongo();
-    const id = params.appointmentId
     console.log('🔎 Looking for appointment ID...');
-    const appointments = await Appointment.findById(id)
-    console.log('✅ Appointment ID found', appointments);
-    return json(appointments, {status:201});
+    const appointment = await Appointment.findById(params.appointmentId)
+    console.log('✅ Appointment ID found', appointment);
+    return json(appointment, {status:201});
   } catch (err) {
     console.error('GET /appointment error:', err);
     return json({error:'Internal Server Error'}, { status: 500 });

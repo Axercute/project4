@@ -4,9 +4,7 @@ const appointmentSchema = new mongoose.Schema({
   name: {type: String},
   date: {type: String, required: true },        
   time: {type: String, required: true },  
-  standardTreatment:{type:String},
-  wellnessProgramme: {type:String},
-  packagedTreatment: {type:String},
+  treatments: {type: Array, required:true},
   price:{type:Number},
   extraComments: { type: String },
 });

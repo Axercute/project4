@@ -4,15 +4,7 @@ import {page} from "$app/state"
 import { DateTime as dt } from "luxon";
 // const appointmentId=page.params.appointmentId
 // let data=$state("")
-let arrayOfTreatments=$state([])
 let {data}=$props()
-if(data.appointment.standardTreatment){
-arrayOfTreatments.push(data.appointment.standardTreatment)}
-if(data.appointment.packagedTreatment){
-arrayOfTreatments.push(data.appointment.packagedTreatment)
-}
-if(data.appointment.wellnessProgramme){
-arrayOfTreatments.push(data.appointment.wellnessProgramme)}   
 </script>
 {#if data}
   <div class="flex justify-center items-center min-h-screen">
@@ -29,8 +21,8 @@ arrayOfTreatments.push(data.appointment.wellnessProgramme)}
       <div>
         <h3 class="text-xl font-semibold text-white mb-2">Treatments booked:</h3>
         <ol class="list-decimal list-inside text-green-400">
-          {#each arrayOfTreatments as element}
-            <li>{element}</li>
+          {#each data.appointment.treatments as element}
+            <li>{element.english_name}</li>
           {/each}
         </ol>
       </div>
