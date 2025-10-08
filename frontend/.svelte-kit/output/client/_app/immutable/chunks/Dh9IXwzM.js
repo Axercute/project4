@@ -1,1 +1,0 @@
-import{R as T,o as c,n as q,y as x,S as y}from"./DwOnz62-.js";function k(i,r){return i===r||(i==null?void 0:i[y])===r}function B(i={},r,S,h){return T(()=>{var s,f;return c(()=>{s=f,f=(h==null?void 0:h())||[],q(()=>{i!==S(...f)&&(r(i,...f),s&&k(S(...s),i)&&r(null,...s))})}),()=>{x(()=>{f&&k(S(...f),i)&&r(null,...f)})}}),i}export{B as b};
