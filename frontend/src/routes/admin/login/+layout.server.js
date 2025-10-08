@@ -21,7 +21,7 @@ try{
     console.log(userX)
     const user = {
     ...userX,
-    _id: userX._id.toString()//for serialize
+    _id: userX._id.toString()//for serialization
 };
 return { user };
 }

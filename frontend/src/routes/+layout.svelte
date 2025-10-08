@@ -19,7 +19,7 @@
 const adminBarInfo = [
   { display: 'Profile', path: "admin/login" },
   { display:"Booking", path:"booking"},
-  { display:"Attendance", path:"attendance"},
+  { display:"Services", path:"admin/login/services"},
   { display: 'Customers', path: 'customers' },
   { display: 'Staff', path: 'Staff' }
 ];

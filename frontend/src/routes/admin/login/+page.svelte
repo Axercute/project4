@@ -2,6 +2,7 @@
 let {data}=$props()
 import { role } from "$lib/globalView.js";
 import Cookies from "js-cookie"
+import { invalidateAll } from "$app/navigation";
 role.set(data.user.role)
 
 import {profilePicture} from "$lib/globalView"
@@ -32,6 +33,7 @@ const askImage=async()=>{
   });
   const result = await response.json();
   console.log("update pfp completed",result)
+  invalidateAll() //refreshes whole page
   formShow=false
   profileInput=""
   } 
@@ -85,11 +87,13 @@ text-white justify-center overflow-hidden w-full md:w-150 xl:w-250 bg-[#7d1b1f]"
 <div class="flex flex-col w-1/2 justify-center p-2">
 <div class="font-bold">Staff Name: {data.user.staffName}</div>
 <div class="font-bold">Role: {data.user.role}</div> 
-<div class="font-bold">Last signed in: </div> 
+<div class="font-bold">Last Checked In: </div> 
+<div class="font-bold">Last Checked Out: </div> 
 <button class="bg-red-400 hover:bg-green-400" onclick={logout}>Log Out</button>
 </div>
 </div>
-Staff meeting
+<button class="bg-red-400 hover:bg-green-400">Check In</button>
+<button class="bg-red-400 hover:bg-green-400">Check Out</button>
 </div>
 </div>
 
