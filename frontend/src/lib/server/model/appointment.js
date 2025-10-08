@@ -9,8 +9,6 @@ const appointmentSchema = new mongoose.Schema({
   packagedTreatment: {type:String},
   price:{type:Number},
   extraComments: { type: String },
-}, {
-  timestamps: true  // adds createdAt and updatedAt fields automatically
 });
 export const Appointment = mongoose.models.Appointment || mongoose.model("Appointment", appointmentSchema);
 

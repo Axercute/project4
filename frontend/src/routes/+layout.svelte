@@ -20,7 +20,7 @@ const adminBarInfo = [
   { display: 'Profile', path: "admin/login" },
   { display:"Booking", path:"booking"},
   { display:"Services", path:"admin/login/services"},
-  { display: 'Customers', path: 'customers' },
+  { display: 'Customers', path: 'admin/login/customers' },
   { display: 'Staff', path: 'Staff' }
 ];
 </script>

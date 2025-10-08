@@ -32,19 +32,18 @@ formSubmission.standardTreatmentSelected.starting_price+
 formSubmission.wellnessProgrammeSelected.starting_price+
 formSubmission.packagedTreatmentSelected.starting_price
 ))
-console.log(data)
 let arrayOfTreatments=$state([])
 let treatmentMessage=$state("")
 
- let finalMessage = $state("")
+let finalMessage = $state("")
 
-  const handleSubmit=async(event)=> {
-    event.preventDefault();
+const handleSubmit=async(event)=> {
+  event.preventDefault();
   if(!formSubmission.standardTreatmentSelected.english_name&&!formSubmission.wellnessProgrammeSelected.english_name&&!formSubmission.packagedTreatmentSelected.english_name) {
-    warningText=true
-    return;
-  }
-  // console.log(formSubmission)
+  warningText=true
+  return;
+}
+
 if(formSubmission.standardTreatmentSelected.english_name){
   arrayOfTreatments.push(formSubmission.standardTreatmentSelected.english_name)}
 if(formSubmission.wellnessProgrammeSelected.english_name){
@@ -61,20 +60,21 @@ else{
 }
 finalMessage=`This is ${formSubmission.name}, I would like to book a treatment at around $${price.toFixed(2)} on ${formSubmission.appointmentDate.toFormat('dd MMMM yyyy')} at ${formSubmission.appointmentTime}.${treatmentMessage}.${formSubmission.additionalRequest}`
 
-// console.log(submissionString);
-    const response = await fetch('/api/appointment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formSubmission)
-    });
-    
-    const result = await response.json();
-    const link = result._id
-    await goto(`/booking/${link}`)
-    window.open(`https://wa.me/6582881687?text=${finalMessage}`, "_blank");
-  }
+console.log(formSubmission)
+
+// const response = await fetch('/api/appointment', {
+//   method: 'POST',
+//   headers: {
+//   'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify(formSubmission)
+// });
+
+// const result = await response.json();
+// const link = result._id
+// await goto(`/booking/${link}`)
+// window.open(`https://wa.me/6582881687?text=${finalMessage}`, "_blank");
+}
 
 //Date logic from here onwards
 const openTime = 10;
