@@ -1,5 +1,4 @@
 <script>
-import { invalidateAll } from "$app/navigation";
 let {data} =$props()
 import { goto } from "$app/navigation";
 import { DateTime as dt } from "luxon";
@@ -11,6 +10,9 @@ let warningText=$state(false)
 let message = $state("")
 let buttons =$state("")
 let storedDOM=$state("")
+
+let changeActivation=$state(false)
+let formSubmission=$state("")
 
  const filterMenu = (date) => {
   selectedChoice = date
@@ -27,7 +29,9 @@ buttonsReset()
 const messageDisplay=(command)=>{
   if (command ==="Make changes"){
     message="What would you like to change"
-    buttons=["Confirm delete","Cancel"]
+    changeActivation=true
+    formSubmission={...storedDOM}
+    buttons=["Confirm changes","Cancel"]
   }
   if(command==="Complete it"){
     message="Are you sure you would like to complete? The purchase amount will be reflected to the boss"
@@ -40,6 +44,7 @@ const messageDisplay=(command)=>{
   if(command==="Cancel"){
     warningText=false
     buttonsReset()
+    changeActivation=false
   }
 }
 
@@ -55,6 +60,18 @@ const action =async(actionCommand)=>{
       const response = await fetch(`/api/appointment/${storedDOM._id}`, {
       method: 'DELETE'});
       const deletedItem = await response.json()
+      window.location.reload(); 
+    }
+    if(actionCommand==="Confirm changes"){
+    const response = await fetch(`/api/appointment/${formSubmission._id}`, {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formSubmission)
+    });
+    const what = await response.json()
+    console.log(what)
       window.location.reload(); 
     }
 }
@@ -83,6 +100,7 @@ const action =async(actionCommand)=>{
             <li>{miniElement.english_name}</li>
           {/each}
         </ol>
+        <div class="flex-1 break-words">Comment: {element.extraComments}</div>
         <div class="text-right text-md font-bold">Total price roughly: ${element.price.toFixed(2)}</div>
       </div>
     {/each}
@@ -101,6 +119,26 @@ const action =async(actionCommand)=>{
   <div class="w-full flex flex-col justify-center items-center">
     <div class="font-bold text-white text-lg break-words">{message}</div>
   </div>
+
+
+{#if changeActivation}
+<label for="time" class="mb-2">Your name</label>
+<input type="text" id="time" class="text-center text-black" bind:value={formSubmission.name}/>
+
+<label for="treatments" class="mb-2">Appointment Time</label>
+<input type="text" id="treatments" class="text-center text-black" bind:value={formSubmission.time}/>
+
+<label for="treatments" class="mb-2">Treatments</label>
+{#each formSubmission.treatments as element}
+<input type="text" id="treatments" class="text-center text-black" bind:value={element.english_name}/>
+{/each}
+
+<label for="extraComments" class="mb-2">Comments</label>
+<input type="text" id="extraComments" class="text-center text-black" bind:value={formSubmission.extraComments}/>
+
+<label for="extraComments" class="mb-2">Price, do not place "$"</label>
+<input type="text" id="extraComments" class="text-center text-black" bind:value={formSubmission.price}/>
+{/if}
 
   <div class="flex flex-col gap-2 mt-3 py-2 w-full">
     {#each buttons as element}

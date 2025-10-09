@@ -7,6 +7,7 @@ const appointmentSchema = new mongoose.Schema({
   treatments: {type: Array, required:true},
   price:{type:Number},
   extraComments: { type: String },
+  status: {type:String, default:"incomplete"}
 });
 export const Appointment = mongoose.models.Appointment || mongoose.model("Appointment", appointmentSchema);
 
