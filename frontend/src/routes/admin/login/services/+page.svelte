@@ -1,1 +1,44 @@
-test
+<script>
+  let {data} =$props()
+  let choices = $state([...new Set(data.services.map(t=>t.category).filter(c => c !== "Featured Treatment"&&c!=="Consultation"))])
+  let selectedChoice=$state(choices[0])
+  let priceMenu = $state(data.services.filter(t=>t.category ===selectedChoice))
+
+ const filterMenu = (category) => {
+  selectedChoice = category;
+  priceMenu = data.services.filter(t=>t.category ===selectedChoice)
+ }
+
+</script>
+
+  <div class="flex flex-wrap justify-center mt-3">
+    {#each choices as element}
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
+      <div
+        class={`px-4 py-2 font-semibold bg-red-400 border border-black text-white
+                ${selectedChoice === element
+                  ? 'bg-red-800' 
+                  : 'text-red-800'} hover:cursor-pointer hover:bg-red-500`}
+        onclick={() => filterMenu(element)}
+      >
+        {element}
+        </div>
+    {/each}
+    </div>
+ 
+
+ <!-- create an "outer container and make it flex. inner container will be centered with 16 pexels of space on left and right side of inner container -->
+<div class="w-full flex justify-center px-4">  
+  <!-- Limit the width on larger screens and stack cards vertically -->
+  <div class="w-full max-w-4xl flex flex-col gap-4 mt-5">
+    {#each priceMenu as element}
+      <div class="bg-red-800 text-white text-md font-semibold rounded-xl p-4 shadow">
+        <div class="mb-1 text-lg font-bold">{element.english_name}</div>
+        <div class="mb-2 text-sm">{element.description}</div>
+        <div class="text-right text-md font-bold">${element.starting_price}</div>
+      </div>
+    {/each}
+  </div>
+</div>
+
+    
