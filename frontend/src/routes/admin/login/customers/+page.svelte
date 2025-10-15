@@ -48,11 +48,6 @@ const messageDisplay=(command)=>{
   }
 }
 
-// const editInfo=(elementInfo)=>{
-//   warningText=true //display warning Text box
-//   storedDOM=elementInfo //store the virtual DOM here
-// } 
-
 const action =async(actionCommand)=>{
     if(actionCommand==="Confirm delete"){
       warningText=""
@@ -75,6 +70,7 @@ const action =async(actionCommand)=>{
       window.location.reload(); 
     }
 }
+
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions (because of reasons) -->
@@ -110,7 +106,7 @@ const action =async(actionCommand)=>{
     
 {#if warningText}
 <div
-  class="flex flex-col items-center justify-center absolute
+  class="flex flex-col items-center justify-center fixed
          top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
          bg-[#7d1b1f] rounded-2xl text-white font-semibold p-4 border-2 border-white
          max-w-[90vw] min-w-[350px] md:min-w-[500px]
@@ -134,7 +130,7 @@ const action =async(actionCommand)=>{
 {/each}
 
 <label for="extraComments" class="mb-2">Comments</label>
-<input type="text" id="extraComments" class="text-center text-black" bind:value={formSubmission.extraComments}/>
+<textarea bind:value = {formSubmission.extraComments} id="extraComments" class="text-black bg-white rounded flex mb-2 border-2 border-transparent focus:border-emerald-900 focus:outline-none focus:border-2 focus-within:bg-amber-400 font-semibold h-20 w-50"></textarea>
 
 <label for="extraComments" class="mb-2">Price, do not place "$"</label>
 <input type="text" id="extraComments" class="text-center text-black" bind:value={formSubmission.price}/>

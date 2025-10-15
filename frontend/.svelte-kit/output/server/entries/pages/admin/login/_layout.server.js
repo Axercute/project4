@@ -8,11 +8,7 @@ const load = async ({ cookies, fetch }) => {
   try {
     const token = cookies.get("token");
     const jwtDecoded = jwt.verify(token, private_env.SECRET);
-    cookies.set("role", jwtDecoded.role, {
-      path: "/",
-      httpOnly: false
-      // make it readable by js-cookie
-    });
+    cookies.set("role", jwtDecoded.role, { expires: 1, path: '/' });
     await startMongo();
     const userX = await User.findById(jwtDecoded._id).lean();
     console.log(userX);
