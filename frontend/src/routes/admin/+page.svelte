@@ -1,6 +1,5 @@
 <script>
 import Cookies from 'js-cookie';
-import { signIn } from '$lib/authService';
 import { goto } from '$app/navigation';
 import { onMount } from 'svelte';
 import { jwtDecode } from 'jwt-decode';
