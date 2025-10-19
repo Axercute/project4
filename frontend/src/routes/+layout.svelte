@@ -21,7 +21,7 @@ const adminBarInfo = [
   { display:"Booking", path:"booking"},
   { display:"Services", path:"admin/login/services"},
   { display: 'Customers', path: 'admin/login/customers' },
-  { display: 'Staff', path: 'Staff' }
+  { display: 'Staff', path: 'admin/login/staff' }
 ];
 </script>
 <Navbar navBarInfo={$role==="boss" ? adminBarInfo : navBarInfo}/>

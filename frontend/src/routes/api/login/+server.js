@@ -1,9 +1,9 @@
 import { startMongo } from "$lib/server/db/mongo"
 import { User } from "$lib/server/model/user"
-import crypto from "crypto-js";
-import { createJWT } from "$lib/server/utility/securityUtil.js";
-import { Appointment } from "$lib/server/model/appointment.js";
 import { json } from "@sveltejs/kit";
+import jwt from "jsonwebtoken"
+import { env } from '$env/dynamic/private';
+const SECRET = env.SECRET;
 
 export const POST=async({request})=>{
   try {
@@ -17,7 +17,7 @@ export const POST=async({request})=>{
     }
     const payload = { staffName: userFound.staffName, _id:userFound._id,role:userFound.role };
     // create a token
-    const token = createJWT(payload);
+    const token = jwt.sign(payload ,SECRET,{ expiresIn: "24h" });
     //update the user record with this new jwt for session tracking
     await User.updateOne({ staffName: data.staffName}, { jwt: token})
     console.log("Login success!",token)
