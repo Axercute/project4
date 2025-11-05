@@ -22,9 +22,9 @@ const adminBarInfo = [
   { display:"Services", path:"admin/login/services"},
   { display: 'Customers', path: 'admin/login/customers' },
   { display: 'Staff', path: 'admin/login/staff' }
-];
+]
 </script>
-<Navbar navBarInfo={$role==="boss" ? adminBarInfo : navBarInfo}/>
+<Navbar navBarInfo={$role==="boss"? adminBarInfo :$role==="regular"? adminBarInfo.filter(element => element.display !== "Staff") : navBarInfo}/>
 {@render children()}
   <style lang="postcss">
   @reference "tailwindcss";

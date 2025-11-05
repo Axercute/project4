@@ -33,7 +33,7 @@
   const selectDate = (day) => {
     if (!day) return;
     const dateObj = firstDayOfThisMonth.set({ day });
-    if (dateObj >= today.startOf('day')) selectedDate = dateObj;
+    selectedDate = dateObj;
   };
 
   import { onMount } from "svelte";
@@ -61,7 +61,6 @@
     {selectedDate.toFormat('dd MMMM yyyy')}
     </div>
 
-    {#if open}
       <!-- dropdown calendar -->
        <div class="flex-center">
       <div class="absolute mt-1 p-2 w-80 bg-[#7d1b1f] border-2 rounded-xl border-white z-10">
@@ -87,15 +86,10 @@
                   class="rounded p-1 cursor-pointer
                     {firstDayOfThisMonth.set({ day }).hasSame(selectedDate, 'day')
                       ? 'bg-green-400 text-white hover:bg-green-400'
-                      : firstDayOfThisMonth.set({ day }) < today
-                        ? 'bg-gray-500 hover:cursor-not-allowed opacity-50'
                         : 'bg-red-400 `text-white hover:bg-green-400'}"
                   onclick={() => {
                     const dateObj = firstDayOfThisMonth.set({ day });
-                    if (dateObj >= today.startOf('day')) {
                       selectDate(day);
-                      open = false; // <-- close the dropdown immediately
-                    }
                   }}
                   >
                 {day}
@@ -105,11 +99,6 @@
         </div>
       </div>
       </div>
-    {/if}
 
   </div>
-
-  <!-- <p class="mt-2">
-    Selected: {selectedDate.toLocaleString(dt.DATETIME_FULL)}
-  </p> -->
 </div>

@@ -37,8 +37,8 @@ const messageDisplay=(command)=>{
     buttons=["Confirm unreveal","Cancel"]
   }
   if(command==="Fire staff"){
-    message="Are you sure you would like to delete it? Nobody will be able to get it back"
-    buttons=["Confirm delete","Cancel"]
+    message="Are you sure you want to fire him/her? He/she will be fired permanently"
+    buttons=["Confirm fire","Cancel"]
   }
   if (command==="Create new staff"){
     message="Please enter their staff name and pin"
@@ -56,7 +56,12 @@ const messageDisplay=(command)=>{
 }
 
 const action =async(actionCommand)=>{
-    if(actionCommand==="Confirm delete"){
+    if(actionCommand==="Confirm fire"){
+          if(storedDOM.role==="boss"){
+      alert("You cannot fire yourself!")
+      window.location.reload();
+      return
+      }
       warningText=""
       buttonsReset()
       const response = await fetch(`/api/staff/${storedDOM._id}`, {
@@ -70,6 +75,14 @@ const action =async(actionCommand)=>{
       buttonsReset()
     }
     if(actionCommand==="Confirm changes"){
+    if (formSubmission.pin.length!==6){
+    alert("please input 6 numbers for pin")
+    return
+    }
+    if (isNaN(formSubmission.pin)){
+    alert("Please input only numbers for pin")
+    return
+    }
     const response = await fetch(`/api/staff/${formSubmission._id}`, {
     method: 'POST',
     headers: {
@@ -83,7 +96,14 @@ const action =async(actionCommand)=>{
     }
 
     if(actionCommand==="Confirm create new staff"){
-    console.log(formSubmission.pin)
+    if (formSubmission.pin.length!==6){
+      alert("please input 6 numbers for pin")
+      return
+    }
+    if (isNaN(formSubmission.pin)){
+      alert("Please input only numbers for pin")
+      return
+    }
     const response = await fetch(`/api/staff`, {
     method: 'POST',
     headers: {
