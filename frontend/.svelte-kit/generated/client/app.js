@@ -27,7 +27,7 @@ export const dictionary = {
 		"/admin/login/customers": [~6,[2]],
 		"/admin/login/customers/[appointmentId]": [7,[2]],
 		"/admin/login/services": [~8,[2]],
-		"/admin/login/staff": [9,[2]],
+		"/admin/login/staff": [~9,[2]],
 		"/booking": [10],
 		"/booking/[appointmentId]": [~11],
 		"/contactUs": [12],
