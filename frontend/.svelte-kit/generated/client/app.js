@@ -1,3 +1,5 @@
+import * as universal_hooks from '../../../src/hooks.js';
+
 export { matchers } from './matchers.js';
 
 export const nodes = [
@@ -16,7 +18,8 @@ export const nodes = [
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
-	() => import('./nodes/15')
+	() => import('./nodes/15'),
+	() => import('./nodes/16')
 ];
 
 export const server_loads = [2,3];
@@ -32,15 +35,16 @@ export const dictionary = {
 		"/booking": [11],
 		"/booking/[appointmentId]": [~12],
 		"/contactUs": [13],
-		"/pricing": [14],
-		"/test": [15]
+		"/demo": [14],
+		"/pricing": [15],
+		"/test": [16]
 	};
 
 export const hooks = {
 	handleError: (({ error }) => { console.error(error) }),
 	
-	reroute: (() => {}),
-	transport: {}
+	reroute: universal_hooks.reroute || (() => {}),
+	transport: universal_hooks.transport || {}
 };
 
 export const decoders = Object.fromEntries(Object.entries(hooks.transport).map(([k, v]) => [k, v.decode]));
